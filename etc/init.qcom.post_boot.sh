@@ -121,16 +121,10 @@ case "$target" in
      echo 0 > /sys/module/pm_8660/modes/cpu1/standalone_power_collapse/idle_enabled
      echo 0 > /sys/module/pm_8660/modes/cpu0/power_collapse/idle_enabled
      echo 0 > /sys/module/pm_8660/modes/cpu1/power_collapse/idle_enabled
-     echo "ondemand" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-     echo "ondemand" > /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor
-     echo 90 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
-     echo 50000 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
-     echo 1 > /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
-     echo 4 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
-     echo 10 > /sys/devices/system/cpu/cpufreq/ondemand/down_differential
+     echo "interactive" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+     echo "interactive" > /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor
      echo 384000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
      echo 384000 > /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq
-     chown system /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
      chown system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
      chown system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
      chown system /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq
