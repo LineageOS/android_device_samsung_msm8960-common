@@ -25,7 +25,6 @@ public class mDNIeFragmentActivity extends PreferenceFragment {
     private mDNIeScenario mmDNIeScenario;
     private mDNIeMode mmDNIeMode;
     private mDNIeOutdoor mmDNIeOutdoor;
-    private TouchscreenSensitivity mTouchscreenSensitivity;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,9 +40,6 @@ public class mDNIeFragmentActivity extends PreferenceFragment {
 
         mmDNIeOutdoor = (mDNIeOutdoor) findPreference(DeviceSettings.KEY_MDNIE_OUTDOOR);
         mmDNIeOutdoor.setEnabled(mDNIeOutdoor.isSupported());
-
-        mTouchscreenSensitivity = (TouchscreenSensitivity) findPreference(DeviceSettings.KEY_TOUCHSCREEN_SENSITIVITY);
-        mTouchscreenSensitivity.setEnabled(mTouchscreenSensitivity.isSupported());
     }
 
 }
