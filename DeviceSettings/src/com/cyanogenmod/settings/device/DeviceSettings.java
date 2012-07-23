@@ -35,15 +35,7 @@ public class DeviceSettings extends FragmentActivity {
 
     public static final String SHARED_PREFERENCES_BASENAME = "com.cyanogenmod.settings.device";
     public static final String ACTION_UPDATE_PREFERENCES = "com.cyanogenmod.settings.device.UPDATE";
-    public static final String KEY_MDNIE_SCENARIO = "mdnie_scenario";
-    public static final String KEY_MDNIE_MODE = "mdnie_mode";
-    public static final String KEY_MDNIE_OUTDOOR = "mdnie_outdoor";
-    public static final String KEY_HSPA = "hspa";
-    public static final String KEY_USE_GYRO_CALIBRATION = "use_gyro_calibration";
-    public static final String KEY_CALIBRATE_GYRO = "calibrate_gyro";
-    public static final String KEY_TOUCHSCREEN_SENSITIVITY = "touchscreen_sensitivity";
     public static final String KEY_TOUCHKEY_LIGHT = "touchkey_light";
-    public static final String KEY_TOUCHKEY_BLN = "touchkey_bln";
 
     ViewPager mViewPager;
     TabsAdapter mTabsAdapter;
@@ -62,8 +54,6 @@ public class DeviceSettings extends FragmentActivity {
         bar.setTitle(R.string.app_name);
 
         mTabsAdapter = new TabsAdapter(this, mViewPager);
-        mTabsAdapter.addTab(bar.newTab().setText(R.string.category_mdnie_title),
-                mDNIeFragmentActivity.class, null);
         mTabsAdapter.addTab(bar.newTab().setText(R.string.category_sensors_title),
                 SensorsFragmentActivity.class, null);
 
