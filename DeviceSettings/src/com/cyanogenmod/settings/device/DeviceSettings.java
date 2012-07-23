@@ -38,10 +38,6 @@ public class DeviceSettings extends FragmentActivity {
     public static final String KEY_MDNIE_SCENARIO = "mdnie_scenario";
     public static final String KEY_MDNIE_MODE = "mdnie_mode";
     public static final String KEY_MDNIE_OUTDOOR = "mdnie_outdoor";
-    public static final String KEY_HSPA = "hspa";
-    public static final String KEY_USE_GYRO_CALIBRATION = "use_gyro_calibration";
-    public static final String KEY_CALIBRATE_GYRO = "calibrate_gyro";
-    public static final String KEY_TOUCHSCREEN_SENSITIVITY = "touchscreen_sensitivity";
     public static final String KEY_TOUCHKEY_LIGHT = "touchkey_light";
     public static final String KEY_TOUCHKEY_BLN = "touchkey_bln";
 
