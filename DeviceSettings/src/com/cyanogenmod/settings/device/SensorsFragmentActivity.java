@@ -16,19 +16,18 @@
 
 package com.cyanogenmod.settings.device;
 
+import java.io.File;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
 import android.preference.Preference;
-import android.preference.PreferenceActivity;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.util.Log;
-
-import com.cyanogenmod.settings.device.R;
 
 public class SensorsFragmentActivity extends PreferenceFragment {
 
@@ -46,8 +45,13 @@ public class SensorsFragmentActivity extends PreferenceFragment {
 
         addPreferencesFromResource(R.xml.sensors_preferences);
 
-        PreferenceScreen prefSet = getPreferenceScreen();
-
+        PreferenceCategory prefs = (PreferenceCategory) findPreference(DeviceSettings.CATEGORY_SENSORS);
+        if (!(new File(FILE_TOUCHKEY_TOGGLE).exists())) {
+            prefs.removePreference(findPreference(DeviceSettings.KEY_TOUCHKEY_LIGHT));
+        }
+        if (!(new File(FILE_BLN_TOGGLE).exists())) {
+            prefs.removePreference(findPreference(DeviceSettings.KEY_TOUCHKEY_BLN));
+        }
     }
 
     @Override
