@@ -85,6 +85,7 @@ esac
 case $linksNeeded in
    1)
       cd /firmware/image
+      mount -t ext4 -o remount,rw,barrier=0 /dev/block/mmcblk0p14 /system
 
       # Check if need to select modem firmware and do rename in first boot
       case $fixModemFirmware in
@@ -171,6 +172,19 @@ case $linksNeeded in
          *)
             log -p w -t No gss image found;;
       esac
+
+      case `ls dxhdcp2.mdt 2>/dev/null` in
+         dxhdcp2.mdt)
+            for imgfile in dxhdcp2*; do
+               ln -s /firmware/image/$imgfile /system/etc/firmware/$imgfile 2>/dev/null
+            done
+            break;;
+         *)
+            log -p w -t PIL 8960 device but no dxhdcp2 image found;;
+      esac
+
+      #remount file system as read only
+      mount -t ext4 -o remount,ro,barrier=0 /dev/block/mmcblk0p14 /system
       break;;
 
    *)
