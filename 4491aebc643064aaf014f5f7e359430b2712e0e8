@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAXX///f0\u003d",
+        "filename": "rootdir/etc/init.qcom.modem_links.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 883
+      },
+      "writtenOn": "2012-09-09T02:40:35Z",
+      "side": 1,
+      "message": "line 176 to 184 needed to be added..",
+      "revId": "4491aebc643064aaf014f5f7e359430b2712e0e8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
