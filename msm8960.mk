@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Inherit from QCOM common
--include device/samsung/qcom-common/BoardConfigCommon.mk
+-include device/samsung/msm8960-common/BoardConfigCommon.mk
 
 # Permissions
 PRODUCT_COPY_FILES += \
