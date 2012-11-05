@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAa3///js\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 2890
+      },
+      "writtenOn": "2012-11-05T21:39:12Z",
+      "side": 1,
+      "message": "(spelling) StevenHarperUK",
+      "revId": "39ffb55e35c76b5c9271db59db9ffc39c3a60e41",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAa3///jo\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 2890
+      },
+      "writtenOn": "2012-11-05T21:39:12Z",
+      "side": 1,
+      "message": "Change link to current patch,  http://review.cyanogenmod.com/#/c/25281/",
+      "revId": "39ffb55e35c76b5c9271db59db9ffc39c3a60e41",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
