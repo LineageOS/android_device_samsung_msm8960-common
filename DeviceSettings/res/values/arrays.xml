@@ -62,4 +62,14 @@
         <item>100</item>
     </string-array>
 
+    <string-array name="primary_storage_entries">
+        <item>Internal SD</item>
+        <item>External SD</item>
+    </string-array>
+
+    <string-array name="primary_storage_entries_values" translatable="false">
+        <item>sdcard0</item>
+        <item>sdcard1</item>
+    </string-array>
+
 </resources>
