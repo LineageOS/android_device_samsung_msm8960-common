@@ -1,0 +1,8 @@
+Change-Id: If3562c0fd18614a9dd88d45fa6485c72991c4e8e
+Code-Review+2: Steve Kondik <shade@chemlab.org>
+Verified+1: Steve Kondik <shade@chemlab.org>
+Submitted-by: Steve Kondik <shade@chemlab.org>
+Submitted-at: Wed, 05 Dec 2012 16:33:19 -0800
+Reviewed-on: http://review.cyanogenmod.org/27696
+Project: CyanogenMod/android_device_samsung_msm8960-common
+Branch: refs/heads/mr1-staging
