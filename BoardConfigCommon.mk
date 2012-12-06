@@ -93,6 +93,3 @@ BOARD_NEEDS_MEMORYHEAPPMEM := true
 # We still have the old ION API
 BOARD_HAVE_OLD_ION_API := true
 
-# Kernel time optimization
-KERNEL_HAS_GETTIMEOFDAY_HELPER := true
-
