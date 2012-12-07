@@ -65,7 +65,7 @@ PRODUCT_PACKAGES += \
 
 # GPS
 #PRODUCT_PACKAGES += \
-#	gps.msm8960
+	gps.msm8960
 
 # NFC Support
 PRODUCT_PACKAGES += \
