@@ -1,0 +1,11 @@
+Change-Id: I9ff42f389529b95a6a234da7142c79594c297a1b
+Code-Review+2: Shareef Ali <shareefalis@cyanogenmod.org>
+Verified+1: Shareef Ali <shareefalis@cyanogenmod.org>
+Code-Review+1: Scott Warner <tortel1210@gmail.com>
+Code-Review+1: Joelz <joelz9614@gmail.com>
+Code-Review+1: Chris Olin <contact@chrisolin.com>
+Submitted-by: Shareef Ali <shareefalis@cyanogenmod.org>
+Submitted-at: Thu, 03 Jan 2013 12:43:17 -0800
+Reviewed-on: http://review.cyanogenmod.org/29531
+Project: CyanogenMod/android_device_samsung_msm8960-common
+Branch: refs/heads/cm-10.1
