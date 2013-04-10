@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAen//82A\u003d",
+        "filename": "DeviceSettings/res/values-es/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2013-04-10T03:00:21Z",
+      "side": 1,
+      "message": "Same here",
+      "revId": "4996b1f2f53f3189be89567d6d8e03344cec565a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAen//818\u003d",
+        "filename": "DeviceSettings/res/values-es/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2013-04-10T03:00:21Z",
+      "side": 1,
+      "message": "Retriluminación",
+      "revId": "4996b1f2f53f3189be89567d6d8e03344cec565a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAen//814\u003d",
+        "filename": "DeviceSettings/res/values-es/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2013-04-10T03:00:21Z",
+      "side": 1,
+      "message": "Brillo adaptado?",
+      "revId": "4996b1f2f53f3189be89567d6d8e03344cec565a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAen//810\u003d",
+        "filename": "DeviceSettings/res/values-es/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2013-04-10T03:00:21Z",
+      "side": 1,
+      "message": "Sonido de la base",
+      "revId": "4996b1f2f53f3189be89567d6d8e03344cec565a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
