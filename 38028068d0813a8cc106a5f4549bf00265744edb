@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAen//5nc\u003d",
+        "filename": "DeviceSettings/src/com/cyanogenmod/settings/device/VibratorIntensity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 4470
+      },
+      "writtenOn": "2013-04-17T23:05:48Z",
+      "side": 1,
+      "message": "This is wrong \"/sys/class/timed_output/vibrator/\"",
+      "revId": "38028068d0813a8cc106a5f4549bf00265744edb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
