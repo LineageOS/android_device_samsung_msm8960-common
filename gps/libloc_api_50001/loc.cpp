@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 - 2012, Code Aurora Forum. All rights reserved.
+/* Copyright (c) 2011 - 2012, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -9,7 +9,7 @@
  *       copyright notice, this list of conditions and the following
  *       disclaimer in the documentation and/or other materials provided
  *       with the distribution.
- *     * Neither the name of Code Aurora Forum, Inc. nor the names of its
+ *     * Neither the name of The Linux Foundation nor the names of its
  *       contributors may be used to endorse or promote products derived
  *       from this software without specific prior written permission.
  *
@@ -216,7 +216,7 @@ static int get_target_name(void)
             target_name = TARGET_NAME_APQ8064_FUSION3;
         } else {
             read_a_line( id, line, LINE_LEN);
-            if(!strncmp(line, "109", strlen("109"))) {
+            if(!strncmp(line, "109", strlen("109")) || !strncmp(line, "153", strlen("153"))) {
                 target_name = TARGET_NAME_APQ8064_STANDALONE;
             }
         }
@@ -270,6 +270,17 @@ extern "C" const GpsInterface* get_gps_interface()
     if(gps_conf.CAPABILITIES & ULP_CAPABILITY) {
        loc_eng_ulp_inf = loc_eng_get_ulp_inf();
     }
+
+    if (get_target_name() == TARGET_NAME_APQ8064_STANDALONE)
+    {
+        gps_conf.CAPABILITIES &= ~(GPS_CAPABILITY_MSA | GPS_CAPABILITY_MSB);
+        gss_fd = open("/dev/gss", O_RDONLY);
+        if (gss_fd < 0) {
+            LOC_LOGE("GSS open failed: %s\n", strerror(errno));
+        }
+        LOC_LOGD("GSS open success! CAPABILITIES %0x\n", gps_conf.CAPABILITIES);
+    }
+
     return &sLocEngInterface;
 }
 
@@ -323,20 +334,10 @@ static int loc_init(GpsCallbacks* callbacks)
                                     callbacks->release_wakelock_cb, /* release_wakelock_cb */
                                     callbacks->create_thread_cb, /* create_thread_cb */
                                     NULL, /* location_ext_parser */
-                                    NULL  /* sv_ext_parser */};
+                                    NULL, /* sv_ext_parser */
+                                    callbacks->request_utc_time_cb /* request_utc_time_cb */};
     gps_loc_cb = callbacks->location_cb;
     gps_sv_cb = callbacks->sv_status_cb;
-
-    if (get_target_name() == TARGET_NAME_APQ8064_STANDALONE)
-    {
-        gps_conf.CAPABILITIES &= ~(GPS_CAPABILITY_MSA | GPS_CAPABILITY_MSB);
-        gss_fd = open("/dev/gss", O_RDONLY);
-        if (gss_fd < 0) {
-            LOC_LOGE("GSS open failed: %s\n", strerror(errno));
-            return NULL;
-        }
-        LOC_LOGD("GSS open success! CAPABILITIES %0x\n", gps_conf.CAPABILITIES);
-    }
 
     int retVal = -1;
     if (loc_eng_ulp_inf == NULL)
@@ -499,7 +500,6 @@ static int loc_inject_time(GpsUtcTime time, int64_t timeReference, int uncertain
 {
     ENTRY_LOG();
     int ret_val = loc_eng_inject_time(loc_afw_data, time, timeReference, uncertainty);
-
     EXIT_LOG(%d, ret_val);
     return ret_val;
 }

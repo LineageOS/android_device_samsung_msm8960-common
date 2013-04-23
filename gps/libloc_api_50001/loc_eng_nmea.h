@@ -1,4 +1,4 @@
-/* Copyright (c) 2009,2011 The Linux Foundation. All rights reserved.
+/* Copyright (c) 2012, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -27,20 +27,16 @@
  *
  */
 
-#ifndef LOC_ENG_XTRA_H
-#define LOC_ENG_XTRA_H
+#ifndef LOC_ENG_NMEA_H
+#define LOC_ENG_NMEA_H
 
 #include <hardware/gps.h>
 
-// Module data
-typedef struct
-{
-   // loc_eng_ioctl_cb_data_s_type   ioctl_cb_data;
-   gps_xtra_download_request      download_request_cb;
+#define NMEA_SENTENCE_MAX_LENGTH 200
 
-   // XTRA data buffer
-   char                          *xtra_data_for_injection;  // NULL if no pending data
-   int                            xtra_data_len;
-} loc_eng_xtra_data_s_type;
+void loc_eng_nmea_send(char *pNmea, int length, loc_eng_data_s_type *loc_eng_data_p);
+int loc_eng_nmea_put_checksum(char *pNmea, int maxSize);
+void loc_eng_nmea_generate_sv(loc_eng_data_s_type *loc_eng_data_p, const GpsSvStatus &svStatus, const GpsLocationExtended &locationExtended);
+void loc_eng_nmea_generate_pos(loc_eng_data_s_type *loc_eng_data_p, const GpsLocation &location, const GpsLocationExtended &locationExtended);
 
-#endif // LOC_ENG_XTRA_H
+#endif // LOC_ENG_NMEA_H
