@@ -16,6 +16,24 @@
       "revId": "04ff2a9b92a3295b0e891c8aa4a51d312a6cfa53",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAfH///wI\u003d",
+        "filename": "DeviceSettings/res/values-es/arrays.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 2134
+      },
+      "writtenOn": "2013-04-26T15:14:14Z",
+      "side": 1,
+      "message": "\"Sin tratar\", \"Sin procesar\", \"Paso directo\", \"Neutro\",... You can choose one or suggest other ;)",
+      "parentUuid": "AAAAfH///zc\u003d",
+      "revId": "04ff2a9b92a3295b0e891c8aa4a51d312a6cfa53",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
