@@ -1,5 +1,5 @@
 #!/system/bin/sh
-# Copyright (c) 2011-2012, Code Aurora Forum. All rights reserved.
+# Copyright (c) 2011-2012, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -10,7 +10,7 @@
 #       copyright notice, this list of conditions and the following
 #       disclaimer in the documentation and/or other materials provided
 #       with the distribution.
-#     * Neither the name of Code Aurora Forum, Inc. nor the names of its
+#     * Neither the name of The Linux Foundation nor the names of its
 #       contributors may be used to endorse or promote products derived
 #       from this software without specific prior written permission.
 #
@@ -38,7 +38,7 @@ cd /firmware/image
 # Get the list of files in /firmware/image
 # for which sym links have to be created
 
-fwfiles=`ls modem* q6* wcnss* dsps* tzapps* gss*`
+fwfiles=`ls modem* q6* wcnss* dsps* tima* lkmauth* tzapps* gss* mobicore*`
 modem_fwfiles=`ls modem_fw.mdt`
 
 # Check if the links with similar names
@@ -161,6 +161,33 @@ case $linksNeeded in
          *)
             log -p w -t PIL 8960 device but no tzapps image found;;
       esac
+      case `ls tima.mdt 2>/dev/null` in
+         tima.mdt)
+            for imgfile in tima*; do
+               ln -s /firmware/image/$imgfile /system/etc/firmware/$imgfile 2>/dev/null
+            done
+            break;;
+         *)
+            log -p w -t PIL 8960 device but no tima image found;;
+      esac
+	case `ls lkmauth.mdt 2>/dev/null` in
+         lkmauth.mdt)
+            for imgfile in lkmauth*; do
+               ln -s /firmware/image/$imgfile /system/etc/firmware/$imgfile 2>/dev/null
+            done
+            break;;
+         *)
+            log -p w -t PIL 8960 device but no lkmauth image found;;
+      esac
+      case `ls mobicore.mdt 2>/dev/null` in
+         mobicore.mdt)
+            for imgfile in mobicore*; do
+               ln -s /firmware/image/$imgfile /system/etc/firmware/$imgfile 2>/dev/null
+            done
+            break;;
+         *)
+            log -p w -t PIL 8960 device but no mobicore image found;;
+      esac
 
       case `ls gss.mdt 2>/dev/null` in
          gss.mdt)
@@ -171,6 +198,19 @@ case $linksNeeded in
          *)
             log -p w -t No gss image found;;
       esac
+
+      case `ls vidc.mdt 2>/dev/null` in
+         vidc.mdt)
+            ln -s /firmware/image/vidc.mdt /system/etc/firmware/vidc.mdt 2>/dev/null
+            ln -s /firmware/image/vidc.b00 /system/etc/firmware/vidc.b00 2>/dev/null
+            ln -s /firmware/image/vidc.b01 /system/etc/firmware/vidc.b01 2>/dev/null
+            ln -s /firmware/image/vidc.b02 /system/etc/firmware/vidc.b02 2>/dev/null
+            ln -s /firmware/image/vidc.b03 /system/etc/firmware/vidc.b03 2>/dev/null
+            break;;
+         *)
+            log -p w -t PIL 8960 device but no vidc image found;;
+      esac
+
       break;;
 
    *)
