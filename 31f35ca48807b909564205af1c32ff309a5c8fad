@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAfn////k\u003d",
+        "filename": "DeviceSettings/res/values-es/arrays.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 2134
+      },
+      "writtenOn": "2013-05-06T21:42:41Z",
+      "side": 1,
+      "message": "\"Congelada\", \"Fresca\", \"Caliente\" aren\u0027t valid terms for color temp. Only \"Fría\" and \"Cálida\" are valid. Therefore I\u0027ve used \"Muy\" for extreme temps.",
+      "revId": "31f35ca48807b909564205af1c32ff309a5c8fad",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
