@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAfn///QE\u003d",
+        "filename": "DeviceSettings/res/values-fr/strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5596
+      },
+      "writtenOn": "2013-05-08T20:44:47Z",
+      "side": 1,
+      "message": "Définir",
+      "revId": "3fdf8cdf989cbea7a376a1b867e5956e3bd8e57b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
