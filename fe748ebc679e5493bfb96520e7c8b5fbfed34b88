@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f.PtMvE",
+        "filename": "DeviceSettings/res/values-fr/strings.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 4617
+      },
+      "writtenOn": "2013-05-11T17:03:35Z",
+      "side": 1,
+      "message": "Rétroéclairage (partout dans le fichier)",
+      "revId": "fe748ebc679e5493bfb96520e7c8b5fbfed34b88",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
