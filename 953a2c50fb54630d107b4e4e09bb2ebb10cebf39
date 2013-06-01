@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "iCi7acY",
+        "filename": "DeviceSettings/res/values-nl/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 2248
+      },
+      "writtenOn": "2013-06-01T14:41:53Z",
+      "side": 1,
+      "message": "Aanraakknopnotificaties inschakelen",
+      "revId": "953a2c50fb54630d107b4e4e09bb2ebb10cebf39",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "iAiwpdw",
+        "filename": "DeviceSettings/res/values-nl/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 2248
+      },
+      "writtenOn": "2013-06-01T14:41:53Z",
+      "side": 1,
+      "message": "Aanraakknoppen oplichten indien scherm uit is en een notificatie ontvangen is",
+      "revId": "953a2c50fb54630d107b4e4e09bb2ebb10cebf39",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "iOi0UdI",
+        "filename": "DeviceSettings/res/values-nl/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 2248
+      },
+      "writtenOn": "2013-06-01T14:41:53Z",
+      "side": 1,
+      "message": "Toetsenbordverlichting inschakelen",
+      "revId": "953a2c50fb54630d107b4e4e09bb2ebb10cebf39",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "iMjKrU8",
+        "filename": "DeviceSettings/res/values-nl/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 2248
+      },
+      "writtenOn": "2013-06-01T14:41:53Z",
+      "side": 1,
+      "message": "Achtergrondverlichting toetsenbord inschakelen indien scherm aan is\nof\nToetsenbord oplichten indien scherm aan is",
+      "revId": "953a2c50fb54630d107b4e4e09bb2ebb10cebf39",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "iKjHeUQ",
+        "filename": "DeviceSettings/res/values-nl/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 2248
+      },
+      "writtenOn": "2013-06-01T14:41:53Z",
+      "side": 1,
+      "message": "Inhoudspecifieke achtergrondverlichting instellingen inschakelen???",
+      "revId": "953a2c50fb54630d107b4e4e09bb2ebb10cebf39",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "iIjEtUA",
+        "filename": "DeviceSettings/res/values-nl/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 2248
+      },
+      "writtenOn": "2013-06-01T14:41:53Z",
+      "side": 1,
+      "message": "Volumeverhoging tijdens spraakoproepen",
+      "revId": "953a2c50fb54630d107b4e4e09bb2ebb10cebf39",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "iGjBYS4",
+        "filename": "DeviceSettings/res/values-nl/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 2248
+      },
+      "writtenOn": "2013-06-01T14:41:53Z",
+      "side": 1,
+      "message": "Volumeverhoging van de oortelefoon tijdens spraakoproepen",
+      "revId": "953a2c50fb54630d107b4e4e09bb2ebb10cebf39",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "iEjdfRM",
+        "filename": "DeviceSettings/res/values-nl/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 2248
+      },
+      "writtenOn": "2013-06-01T14:41:53Z",
+      "side": 1,
+      "message": "Dock-geluid",
+      "revId": "953a2c50fb54630d107b4e4e09bb2ebb10cebf39",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
