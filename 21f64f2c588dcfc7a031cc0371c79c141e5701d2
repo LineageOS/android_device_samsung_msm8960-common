@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "iGWDtM0",
+        "filename": "DeviceSettings/src/com/cyanogenmod/settings/device/HapticFragmentActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 3589
+      },
+      "writtenOn": "2013-06-20T05:13:18Z",
+      "side": 1,
+      "message": "The other fragments appear to use \"GalaxyS3Parts_General\", regardless of whether it\u0027s sound or sensors. Would you like me to change them all to \"DeviceSettings_General\", or have the various ones be \"DeviceSetings_*insert fragment name here*\"?",
+      "parentUuid": "iMUd4L4",
+      "revId": "21f64f2c588dcfc7a031cc0371c79c141e5701d2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "iOUg5Pk",
         "filename": "DeviceSettings/src/com/cyanogenmod/settings/device/VibratorTuningPreference.java",
         "patchSetId": 1
