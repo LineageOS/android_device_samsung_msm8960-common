@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "iMUd4L4",
+        "filename": "DeviceSettings/src/com/cyanogenmod/settings/device/HapticFragmentActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2013-06-20T04:58:15Z",
+      "side": 1,
+      "message": "More generic plz\n\nYea yea, I know, its not you that did this, but while you\u0027re at it...",
+      "revId": "21f64f2c588dcfc7a031cc0371c79c141e5701d2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "iOUg5Pk",
+        "filename": "DeviceSettings/src/com/cyanogenmod/settings/device/VibratorTuningPreference.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2013-06-20T04:58:15Z",
+      "side": 1,
+      "message": "Should be something more generic",
+      "revId": "21f64f2c588dcfc7a031cc0371c79c141e5701d2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
