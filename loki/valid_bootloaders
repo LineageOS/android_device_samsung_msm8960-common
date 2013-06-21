@@ -1,0 +1,8 @@
+# AT&T
+bootloader=I337UCUAMDB
+bootloader=I337UCUAMDL
+# Verizon
+bootloader=I545VRUAMDK
+# Galaxy Stellar
+bootloader=I200VRALH2
+bootloader=I200VRBMA1
