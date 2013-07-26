@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3acd31a7_e3035c0c",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 444
+      },
+      "writtenOn": "2013-07-26T14:26:35Z",
+      "side": 1,
+      "message": "TARGET_CPU_VARIANT :\u003d krait",
+      "revId": "6729dafaf52a3286821376b1a56385a4b30e0fb9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
