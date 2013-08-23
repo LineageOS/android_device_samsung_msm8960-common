@@ -19,6 +19,9 @@ TARGET_BOARD_PLATFORM := msm8960
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 TARGET_ARCH_VARIANT_CPU := cortex-a9
 
+# Hardware
+BOARD_HARDWARE_CLASS := device/samsung/msm8960-common/cmhw
+
 # inherit from qcom-common
 -include device/samsung/qcom-common/BoardConfigCommon.mk
 
@@ -104,3 +107,4 @@ TARGET_QCOM_MEDIA_VARIANT := caf
 
 # Use retire fence from MDP driver
 TARGET_DISPLAY_USE_RETIRE_FENCE := true
+

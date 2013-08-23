@@ -54,7 +54,6 @@ PRODUCT_PACKAGES += \
 
 # GalaxyS3Settings
 PRODUCT_PACKAGES += \
-    GalaxyS3Settings \
     SamsungServiceMode
 
 # Misc
