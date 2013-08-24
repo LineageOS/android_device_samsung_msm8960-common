@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baee8101_8877fd01",
+        "filename": "DeviceSettings/res/values-da/arrays.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-08-24T20:12:00Z",
+      "side": 1,
+      "message": "Please change this to only 2013",
+      "revId": "4515b990e706950bc1257510449378a3a0b7600c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baee8101_a86ac118",
+        "filename": "DeviceSettings/res/values-da/arrays.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-08-24T20:12:00Z",
+      "side": 1,
+      "message": "A space too much here",
+      "revId": "4515b990e706950bc1257510449378a3a0b7600c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baee8101_6874d9fc",
+        "filename": "DeviceSettings/res/values-da/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-08-24T20:12:00Z",
+      "side": 1,
+      "message": "Please change this to only 2013",
+      "revId": "4515b990e706950bc1257510449378a3a0b7600c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
