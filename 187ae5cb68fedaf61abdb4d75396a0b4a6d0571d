@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa80f949_9e515a65",
+        "filename": "camera/CameraWrapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 5589
+      },
+      "writtenOn": "2013-12-07T12:54:15Z",
+      "side": 1,
+      "message": "the way this is declared, it appears to be disabling face detect on both cameras",
+      "revId": "187ae5cb68fedaf61abdb4d75396a0b4a6d0571d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa80f949_3e4e2ec2",
+        "filename": "camera/CameraWrapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 5589
+      },
+      "writtenOn": "2013-12-07T12:54:15Z",
+      "side": 1,
+      "message": "Wrap this in ENABLE_ZSL ifdefs",
+      "revId": "187ae5cb68fedaf61abdb4d75396a0b4a6d0571d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
