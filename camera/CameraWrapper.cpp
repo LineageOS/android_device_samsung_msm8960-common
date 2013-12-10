@@ -113,8 +113,9 @@ static char * camera_fixup_getparams(int id, const char * settings)
     return ret;
 }
 
-char * camera_fixup_setparams(int id, const char * settings)
+char * camera_fixup_setparams(struct camera_device * device, const char * settings)
 {
+    int id = CAMERA_ID(device);
     bool isVideo = false;
     android::CameraParameters params;
     params.unflatten(android::String8(settings));
@@ -370,7 +371,7 @@ int camera_set_parameters(struct camera_device * device, const char *params)
         return -EINVAL;
 
     char *tmp = NULL;
-    tmp = camera_fixup_setparams(CAMERA_ID(device), params);
+    tmp = camera_fixup_setparams(device, params);
 
 #ifdef LOG_PARAMETERS
     __android_log_write(ANDROID_LOG_VERBOSE, LOG_TAG, tmp);
