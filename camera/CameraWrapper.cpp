@@ -151,6 +151,9 @@ char * camera_fixup_setparams(struct camera_device * device, const char * settin
 #ifdef ENABLE_ZSL
     params.set(android::CameraParameters::KEY_ZSL, "on");
     params.set(android::CameraParameters::KEY_CAMERA_MODE, "1");
+#ifdef MAGIC_ZSL_1508
+    VENDOR_CALL(device, send_command, 1508, 0, 0);
+#endif
 #endif
     android::String8 strParams = params.flatten();
 
