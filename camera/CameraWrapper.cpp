@@ -344,7 +344,7 @@ int camera_cancel_auto_focus(struct camera_device * device)
 
     /* APEXQ/EXPRESS: Calling cancel_auto_focus causes the camera to crash for unknown reasons. Disabling
      * it has no adverse effect. Return 0 */
-#ifndef ENABLE_ZSL
+#ifdef DISABLE_AUTOFOCUS
     return 0;
 #else
     return VENDOR_CALL(device, cancel_auto_focus);
