@@ -96,20 +96,46 @@ static int check_vendor_module()
 
 const static char * iso_values[] = {"auto,ISO100,ISO200,ISO400,ISO800","auto"};
 
+#ifdef PREVIEW_SIZE_FIXUP
+const static char * video_preview_sizes[] = {
+"800x480,720x480,640x480,320x240,176x144",
+"640x480,320x240,176x144"
+};
+#endif
+
 static char * camera_fixup_getparams(int id, const char * settings)
 {
     android::CameraParameters params;
     params.unflatten(android::String8(settings));
+#ifdef PREVIEW_SIZE_FIXUP
+    bool isVideo = !strcmp(params.get(android::CameraParameters::KEY_RECORDING_HINT), "true");
+#endif
 
     // fix params here
     params.set(android::CameraParameters::KEY_SUPPORTED_ISO_MODES, iso_values[id]);
 
+#ifdef PREVIEW_SIZE_FIXUP
+    if(isVideo) {
+    params.set(android::CameraParameters::KEY_SUPPORTED_PREVIEW_SIZES, video_preview_sizes[id]);
+    const char* videoSize = params.get(android::CameraParameters::KEY_VIDEO_SIZE);
+    if (!strcmp(videoSize, "1280x720")) {
+        params.set(android::CameraParameters::KEY_PREVIEW_SIZE, "800x480");
+        } else {
+         params.set(android::CameraParameters::KEY_PREVIEW_SIZE, videoSize);
+         }
+    }
+#endif
+
 #ifdef DISABLE_FACE_DETECTION
+#ifndef DISABLE_FACE_DETECTION_BOTH_CAMERAS
     /* Disable face detection for front facing camera */
     if(id == 1) {
+#endif
         params.set(android::CameraParameters::KEY_MAX_NUM_DETECTED_FACES_HW, "0");
         params.set(android::CameraParameters::KEY_MAX_NUM_DETECTED_FACES_SW, "0");
+#ifndef DISABLE_FACE_DETECTION_BOTH_CAMERAS
     }
+#endif
 #endif
 
     android::String8 strParams = params.flatten();
@@ -142,12 +168,24 @@ char * camera_fixup_setparams(struct camera_device * device, const char * settin
             params.set(android::CameraParameters::KEY_ISO_MODE, "800");
     }
 
+#ifdef PREVIEW_SIZE_FIXUP
+    if(isVideo) {
+        const char* previewSize = params.get(android::CameraParameters::KEY_PREVIEW_SIZE);
+        params.set(android::CameraParameters::KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO, previewSize);
+        params.set(android::CameraParameters::KEY_SUPPORTED_VIDEO_SIZES, video_preview_sizes[id]);
+    }
+#endif
+
 #ifdef DISABLE_FACE_DETECTION
+#ifndef DISABLE_FACE_DETECTION_BOTH_CAMERAS
     /* Disable face detection for front facing camera */
     if(id == 1) {
+#endif
         params.set(android::CameraParameters::KEY_MAX_NUM_DETECTED_FACES_HW, "0");
         params.set(android::CameraParameters::KEY_MAX_NUM_DETECTED_FACES_SW, "0");
+#ifndef DISABLE_FACE_DETECTION_BOTH_CAMERAS
     }
+#endif
 #endif
 
     /* Samsung camcorder mode */
