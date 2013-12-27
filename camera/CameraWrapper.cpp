@@ -128,6 +128,7 @@ char * camera_fixup_setparams(struct camera_device * device, const char * settin
     bool isVideo = !strcmp(params.get(android::CameraParameters::KEY_RECORDING_HINT), "true");
 
     // fix params here
+#ifdef QCOM_HARDWARE
     if(params.get("iso")) {
         const char* isoMode = params.get(android::CameraParameters::KEY_ISO_MODE);
         if(strcmp(isoMode, "ISO100") == 0)
@@ -139,6 +140,7 @@ char * camera_fixup_setparams(struct camera_device * device, const char * settin
         else if(strcmp(isoMode, "ISO800") == 0)
             params.set(android::CameraParameters::KEY_ISO_MODE, "800");
     }
+#endif
 
     /* Disable face detection for front facing camera */
     if(id == 1) {
