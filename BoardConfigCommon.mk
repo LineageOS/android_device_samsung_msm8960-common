@@ -81,9 +81,12 @@ TARGET_USES_QCOM_COMPRESSED_AUDIO := true
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
 # QCOM BSP Enabled
+
+
+ifneq ($(TARGET_USES_QCOM_BSP),false)
 TARGET_USES_QCOM_BSP := true
 COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
-
+endif
 # Kernel time optimization
 # temp remove - causing issues with short/long presses
 # KERNEL_HAS_GETTIMEOFDAY_HELPER := true
