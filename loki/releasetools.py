@@ -30,3 +30,5 @@ def FullOTA_InstallEnd(info):
   info.script.AppendExtra('delete("/system/bin/loki.sh");')
   info.script.AppendExtra('delete("/system/etc/loki_bootloaders");')
   info.script.AppendExtra('delete("/system/etc/unlocked_bootloaders");')
+  info.script.AppendExtra('run_program("/system/bin/variant.sh");')
+  info.script.AppendExtra('delete("/system/bin/variant.sh");')
