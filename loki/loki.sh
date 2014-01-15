@@ -7,7 +7,6 @@
 #
 # Run loki patch on boot.img for locked bootloaders, found in loki_bootloaders
 #
-# Unlocked (dev edition) bootloaders found in unlocked_bootloaders file
 
 export C=/tmp/loki_tmpdir
 
@@ -21,14 +20,8 @@ if [ $? -eq 0 ];then
   exit 0
 fi
 
-egrep -q -f /system/etc/unlocked_bootloaders /proc/cmdline
-if [ $? -eq 0 ];then
-  echo '[*] Unlocked bootloader version detected.'
-  echo '[*] Flashing unmodified boot.img to device.'
-  dd if=/tmp/boot.img of=/dev/block/platform/msm_sdcc.1/by-name/boot || exit 1
-  exit 0
-fi
 
-echo '[*] Unknown bootloader version detected.'
-echo '[*] Not flashing boot.img to this device.'
+echo '[*] Unlocked bootloader version detected.'
+echo '[*] Flashing unmodified boot.img to device.'
+dd if=/tmp/boot.img of=/dev/block/platform/msm_sdcc.1/by-name/boot || exit 1
 exit 0
