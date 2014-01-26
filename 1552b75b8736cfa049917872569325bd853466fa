@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a54edaf_49e7c512",
+        "filename": "msm8960.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2014-01-26T14:46:33Z",
+      "side": 1,
+      "message": "noobnl - should i move this down to jf/d2-common trees so hlte won\u0027t build it?",
+      "revId": "1552b75b8736cfa049917872569325bd853466fa",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
