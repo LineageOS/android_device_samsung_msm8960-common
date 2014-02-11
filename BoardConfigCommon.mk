@@ -80,6 +80,9 @@ TARGET_USES_QCOM_COMPRESSED_AUDIO := true
 # QCOM enhanced A/V
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
+# Enable optimized math functions on more QCOM targets.
+TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
+
 # Kernel time optimization
 # temp remove - causing issues with short/long presses
 # KERNEL_HAS_GETTIMEOFDAY_HELPER := true
