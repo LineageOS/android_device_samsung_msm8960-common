@@ -78,7 +78,7 @@ BOARD_USES_SEPERATED_AUDIO_INPUT := true
 TARGET_USES_QCOM_COMPRESSED_AUDIO := true
 
 # QCOM enhanced A/V
-TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+#TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
 # Kernel time optimization
 # temp remove - causing issues with short/long presses
