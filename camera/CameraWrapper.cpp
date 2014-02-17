@@ -172,6 +172,14 @@ char * camera_fixup_setparams(struct camera_device * device, const char * settin
     params.remove(android::CameraParameters::KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO);
 #endif
 
+#ifdef FFC_RESTRICT_PREVIEW
+    if((id == 1) && !isVideo) {
+        if(strcmp(params.get(android::CameraParameters::KEY_PICTURE_SIZE), "1280x960") == 0) {
+            params.set(android::CameraParameters::KEY_PREVIEW_SIZE, "960x720");
+        }
+    }
+#endif
+
 #ifdef DISABLE_FACE_DETECTION
 #ifndef DISABLE_FACE_DETECTION_BOTH_CAMERAS
     /* Disable face detection for front facing camera */
