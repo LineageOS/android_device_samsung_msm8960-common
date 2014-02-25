@@ -43,7 +43,10 @@ LOCAL_SRC_FILES := \
     CameraWrapper.cpp
 
 LOCAL_SHARED_LIBRARIES := \
-    libhardware liblog libcamera_client libutils
+    libhardware liblog libcamera_client libutils libbinder
+
+LOCAL_C_INCLUDES += \
+    $(TOP)/frameworks/native/include
 
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 LOCAL_MODULE := camera.MSM8960
