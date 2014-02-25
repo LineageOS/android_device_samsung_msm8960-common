@@ -34,6 +34,12 @@
 #include <camera/Camera.h>
 #include <camera/CameraParameters.h>
 
+#ifdef SAMSUNG_CAMERA_MODE
+#include <binder/IPCThreadState.h>
+#include <stdlib.h>
+#include <stdio.h>
+#endif
+
 static android::Mutex gCameraWrapperLock;
 static camera_module_t *gVendorModule = 0;
 
@@ -143,14 +149,29 @@ static char * camera_fixup_getparams(int id, const char * settings)
     ALOGD("%s: get parameters fixed up", __FUNCTION__);
     return ret;
 }
+#ifdef SAMSUNG_CAMERA_MODE
+const static char * excludeList[] = {"com.snapchat.android", "com.google.android.talk"};
+const static int excludeListLen = 2;
+static char pname[64] = { 0 };
+static int exclude = 0;
+const int& whoCalledMe() {
+    static const int processid = android::IPCThreadState::selfOrNull()->getCallingPid();
+    return processid;
+}
+#endif
 
 char * camera_fixup_setparams(struct camera_device * device, const char * settings)
 {
     int id = CAMERA_ID(device);
     android::CameraParameters params;
     params.unflatten(android::String8(settings));
+#ifdef SAMSUNG_CAMERA_MODE
     const char KEY_SAMSUNG_CAMERA_MODE[] = "cam_mode";
     const char* camMode = params.get(KEY_SAMSUNG_CAMERA_MODE);
+    char plink[64];
+    FILE *fptr;
+    int pid = whoCalledMe();
+#endif
 
     bool isVideo = !strcmp(params.get(android::CameraParameters::KEY_RECORDING_HINT), "true");
 
@@ -193,8 +214,34 @@ char * camera_fixup_setparams(struct camera_device * device, const char * settin
 
 #ifdef SAMSUNG_CAMERA_MODE
     /* Samsung camcorder mode */
-    params.set(KEY_SAMSUNG_CAMERA_MODE, isVideo ? "1" : "0");
+    if(pname[0] == 0) {
+        snprintf(plink, sizeof(plink), "/proc/%i/cmdline", pid);
+        fptr = fopen(plink, "r");
+        if (fptr != NULL) {
+            ALOGD("[nardshu]Determining name of calling PID %i", pid);
+            fscanf(fptr, "%s", pname);
+            ALOGD("[nardshu]Caller is %s", pname);
+
+            for(int i = 0; i < excludeListLen; i++) {
+                if(strcmp(excludeList[i], pname) == 0) {
+                ALOGD("[nardshu]Camera opened by excluded app %s, not enabling Samsung camcorder mode.", pname);
+                exclude = 1;
+                }
+            }
+        } else {
+            ALOGD("Unable to open /proc/%i/cmdline", pid);
+        }
+        fclose(fptr);
+    }
+
+    if (exclude) {
+        ALOGD("[nardshu]Camera opened by excluded app %s, not enabling Samsung camcorder mode.", pname);
+    } else {
+        ALOGD("[nardshu]Enabling Samsung camcorder mode for %s", pname);
+        params.set(KEY_SAMSUNG_CAMERA_MODE, isVideo ? "1" : "0");
+    }
 #endif
+
 #ifdef ENABLE_ZSL
     params.set(android::CameraParameters::KEY_ZSL, isVideo ? "off" : "on");
     params.set(android::CameraParameters::KEY_CAMERA_MODE, isVideo ? "0" : "1");
@@ -555,6 +602,11 @@ done:
 int camera_device_open(const hw_module_t* module, const char* name,
                 hw_device_t** device)
 {
+#ifdef SAMSUNG_CAMERA_MODE
+    //Read this here because if we read it after the Mutex is taken, BAD THYNGES
+    //happen.
+    whoCalledMe();
+#endif
     int rv = 0;
     int num_cameras = 0;
     int cameraid;

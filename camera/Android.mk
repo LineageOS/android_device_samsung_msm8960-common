@@ -27,10 +27,6 @@ ifeq ($(TARGET_NEED_PREVIEW_SIZE_FIXUP),true)
     LOCAL_CFLAGS += -DPREVIEW_SIZE_FIXUP
 endif
 
-ifeq ($(TARGET_NEED_SAMSUNG_CAMERA_MODE),true)
-    LOCAL_CFLAGS += -DSAMSUNG_CAMERA_MODE
-endif
-
 ifeq ($(TARGET_ADD_ISO_MODE_1600),true)
     LOCAL_CFLAGS += -DISO_MODE_1600
 endif
@@ -47,6 +43,12 @@ LOCAL_SRC_FILES := \
 
 LOCAL_SHARED_LIBRARIES := \
     libhardware liblog libcamera_client libutils
+
+ifeq ($(TARGET_NEED_SAMSUNG_CAMERA_MODE),true)
+    LOCAL_CFLAGS += -DSAMSUNG_CAMERA_MODE
+    LOCAL_SHARED_LIBRARIES += libbinder
+    LOCAL_C_INCLUDES += $(TOP)/frameworks/native/include
+endif
 
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 LOCAL_MODULE := camera.MSM8960
