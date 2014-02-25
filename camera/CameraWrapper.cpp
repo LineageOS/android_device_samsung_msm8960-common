@@ -34,6 +34,10 @@
 #include <camera/Camera.h>
 #include <camera/CameraParameters.h>
 
+#include <binder/IPCThreadState.h>
+#include <stdlib.h>
+#include <stdio.h>
+
 static android::Mutex gCameraWrapperLock;
 static camera_module_t *gVendorModule = 0;
 
@@ -139,6 +143,10 @@ static char * camera_fixup_getparams(int id, const char * settings)
     return ret;
 }
 
+const static char * whiteList[] = {"com.android.camera2"};
+const static int whiteListLen = 1;
+static char pname[64];
+
 char * camera_fixup_setparams(struct camera_device * device, const char * settings)
 {
     int id = CAMERA_ID(device);
@@ -184,10 +192,15 @@ char * camera_fixup_setparams(struct camera_device * device, const char * settin
 #endif
 #endif
 
-#ifdef SAMSUNG_CAMERA_MODE
     /* Samsung camcorder mode */
-    params.set(KEY_SAMSUNG_CAMERA_MODE, isVideo ? "1" : "0");
-#endif
+    for(int i = 0; i < whiteListLen; i++) {
+        if(strcmp(whiteList[i], pname) == 0) {
+            ALOGD("Camera opened by whitelisted app %s, enabling Samsung camcorder mode.", pname);
+            params.set(KEY_SAMSUNG_CAMERA_MODE, isVideo ? "1" : "0");
+            break;
+        }
+    }
+
 #ifdef ENABLE_ZSL
     params.set(android::CameraParameters::KEY_ZSL, isVideo ? "off" : "on");
     params.set(android::CameraParameters::KEY_CAMERA_MODE, isVideo ? "0" : "1");
@@ -549,6 +562,7 @@ int camera_device_open(const hw_module_t* module, const char* name,
     int cameraid;
     wrapper_camera_device_t* camera_device = NULL;
     camera_device_ops_t* camera_ops = NULL;
+    getCallerPID();
 
     android::Mutex::Autolock lock(gCameraWrapperLock);
 
@@ -651,6 +665,25 @@ fail:
     }
     *device = NULL;
     return rv;
+}
+
+static int getCallerPID(void)
+{
+    int pid = android::IPCThreadState::selfOrNull()->getCallingPid();
+    char plink[64];
+    FILE *fptr;
+
+    snprintf(plink, sizeof(plink), "/proc/%i/cmdline", pid);
+    fptr = fopen(plink, "r");
+    if (fptr != NULL) {
+        ALOGD("Determining name of calling PID %i", pid);
+        fscanf(fptr, "%s", pname);
+        ALOGD("Caller is %s", pname);
+    } else {
+        ALOGD("Unable to open /proc/%i/cmdline", pid);
+    }
+    fclose(fptr);
+    return pid;
 }
 
 int camera_get_number_of_cameras(void)
