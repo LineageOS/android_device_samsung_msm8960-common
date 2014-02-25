@@ -34,6 +34,10 @@
 #include <camera/Camera.h>
 #include <camera/CameraParameters.h>
 
+#include <binder/IPCThreadState.h>
+#include <stdlib.h>
+#include <stdio.h>
+
 static android::Mutex gCameraWrapperLock;
 static camera_module_t *gVendorModule = 0;
 
@@ -138,6 +142,11 @@ static char * camera_fixup_getparams(int id, const char * settings)
     ALOGD("%s: get parameters fixed up", __FUNCTION__);
     return ret;
 }
+#ifdef SAMSUNG_CAMERA_MODE
+const static char * whiteList[] = {"com.android.camera2", "com.google.android.talk"};
+const static int whiteListLen = 2;
+#endif
+static char pname[64] = { 0 };
 
 char * camera_fixup_setparams(struct camera_device * device, const char * settings)
 {
@@ -146,6 +155,8 @@ char * camera_fixup_setparams(struct camera_device * device, const char * settin
     params.unflatten(android::String8(settings));
     const char KEY_SAMSUNG_CAMERA_MODE[] = "cam_mode";
     const char* camMode = params.get(KEY_SAMSUNG_CAMERA_MODE);
+    char plink[64];
+    FILE *fptr;
 
     bool isVideo = !strcmp(params.get(android::CameraParameters::KEY_RECORDING_HINT), "true");
 
@@ -184,10 +195,29 @@ char * camera_fixup_setparams(struct camera_device * device, const char * settin
 #endif
 #endif
 
-#ifdef SAMSUNG_CAMERA_MODE
     /* Samsung camcorder mode */
-    params.set(KEY_SAMSUNG_CAMERA_MODE, isVideo ? "1" : "0");
+    if(pname[0] == 0) {
+        snprintf(plink, sizeof(plink), "/proc/%i/cmdline", pid);
+        fptr = fopen(plink, "r");
+        if (fptr != NULL) {
+            ALOGD("Determining name of calling PID %i", pid);
+            fscanf(fptr, "%s", pname);
+            ALOGD("Caller is %s", pname);
+        } else {
+            ALOGD("Unable to open /proc/%i/cmdline", pid);
+        }
+        fclose(fptr);
+    }
+#ifdef SAMSUNG_CAMERA_MODE
+    for(int i = 0; i < whiteListLen; i++) {
+        if(strcmp(whiteList[i], pname) == 0) {
+            ALOGD("Camera opened by whitelisted app %s, enabling Samsung camcorder mode.", pname);
+            params.set(KEY_SAMSUNG_CAMERA_MODE, isVideo ? "1" : "0");
+            break;
+        }
+    }
 #endif
+
 #ifdef ENABLE_ZSL
     params.set(android::CameraParameters::KEY_ZSL, isVideo ? "off" : "on");
     params.set(android::CameraParameters::KEY_CAMERA_MODE, isVideo ? "0" : "1");
@@ -544,6 +574,9 @@ done:
 int camera_device_open(const hw_module_t* module, const char* name,
                 hw_device_t** device)
 {
+    //Read this here because if we read it after the Mutex is taken, BAD THYNGES
+    //happen.
+    static const int pid = android::IPCThreadState::selfOrNull()->getCallingPid();
     int rv = 0;
     int num_cameras = 0;
     int cameraid;
