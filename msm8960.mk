@@ -50,6 +50,19 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     camera.MSM8960
 
+# GPS
+PRODUCT_PACKAGES += \
+    gps.msm8960 \
+    libgps.utils \
+    libloc_core \
+    libloc_eng
+
+GPS_CONF := device/samsung/jflte/gps/etc/gps.conf
+
+PRODUCT_COPY_FILES += \
+    $(GPS_CONF):/system/etc/gps.conf \
+    device/samsung/jflte/gps/etc/sap.conf:/system/etc/sap.conf
+
 # HAL
 PRODUCT_PACKAGES += \
     copybit.msm8960 \
