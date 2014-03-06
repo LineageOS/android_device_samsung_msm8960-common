@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bae84128_78233706",
+        "filename": "msm8960.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5589
+      },
+      "writtenOn": "2014-03-06T16:27:24Z",
+      "side": 1,
+      "message": "jftle rofl",
+      "revId": "d8491dc503998b391b168c628ad8f4ceee71dfc5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
