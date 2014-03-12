@@ -46,6 +46,8 @@
 #define MSM8930_ID_2 "116"
 #define APQ8030_ID_1 "157"
 #define APQ8074_ID_1 "184"
+#define MSM8960_ID_1 "87"
+#define MSM8960_ID_2 "123"
 
 #define LINE_LEN 100
 #define STR_LIQUID    "Liquid"
@@ -183,7 +185,13 @@ unsigned int loc_get_target(void)
             gTarget = TARGET_APQ_SA;
     }
     else {
-        if( (!memcmp(rd_hw_platform, STR_LIQUID, LENGTH(STR_LIQUID))
+        if( (!memcmp(rd_id, MSM8960_ID_1, LENGTH(MSM8960_ID_1))
+                   && IS_STR_END(rd_id[LENGTH(MSM8960_ID_1)])) ||
+                  (!memcmp(rd_id, MSM8960_ID_2, LENGTH(MSM8960_ID_2))
+                   && IS_STR_END(rd_id[LENGTH(MSM8960_ID_2)])) ) {
+             gTarget = TARGET_MSM_NO_SSC;
+        }
+        else if( (!memcmp(rd_hw_platform, STR_LIQUID, LENGTH(STR_LIQUID))
              && IS_STR_END(rd_hw_platform[LENGTH(STR_LIQUID)])) ||
             (!memcmp(rd_hw_platform, STR_SURF,   LENGTH(STR_SURF))
              && IS_STR_END(rd_hw_platform[LENGTH(STR_SURF)])) ||
