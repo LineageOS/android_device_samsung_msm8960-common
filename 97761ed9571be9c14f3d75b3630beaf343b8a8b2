@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bae84128_adc45892",
+        "filename": "gps/utils/loc_target.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 8390
+      },
+      "writtenOn": "2014-03-15T09:39:20Z",
+      "side": 1,
+      "message": "It would be more consistent to have these lines be entered below, as part of the MSM8930 lines - they have the same end result.",
+      "revId": "97761ed9571be9c14f3d75b3630beaf343b8a8b2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
