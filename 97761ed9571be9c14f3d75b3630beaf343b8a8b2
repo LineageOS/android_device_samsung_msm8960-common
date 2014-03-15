@@ -16,6 +16,24 @@
       "revId": "97761ed9571be9c14f3d75b3630beaf343b8a8b2",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae84128_2d05e8c1",
+        "filename": "gps/utils/loc_target.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 5589
+      },
+      "writtenOn": "2014-03-15T12:57:41Z",
+      "side": 1,
+      "message": "d2 would get detected as \"Surf\" under the current code, but it does not have mdm. Thus the msm8960 check has to be at the top",
+      "parentUuid": "bae84128_adc45892",
+      "revId": "97761ed9571be9c14f3d75b3630beaf343b8a8b2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
