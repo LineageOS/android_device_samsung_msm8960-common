@@ -34,6 +34,24 @@
       "revId": "97761ed9571be9c14f3d75b3630beaf343b8a8b2",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae84128_2da168aa",
+        "filename": "gps/utils/loc_target.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 8390
+      },
+      "writtenOn": "2014-03-15T15:36:59Z",
+      "side": 1,
+      "message": "Would putting the code for MSM8930 at the beginning with the code for d2 cause any problems with MDM devices?. Unfortunately I am not familiar enough with all of the devices to know that for myself.",
+      "parentUuid": "bae84128_2d05e8c1",
+      "revId": "97761ed9571be9c14f3d75b3630beaf343b8a8b2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
