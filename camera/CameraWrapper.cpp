@@ -150,7 +150,7 @@ char * camera_fixup_setparams(struct camera_device * device, const char * settin
     android::CameraParameters params;
     params.unflatten(android::String8(settings));
     const char KEY_SAMSUNG_CAMERA_MODE[] = "cam_mode";
-    const char* camMode = params.get(KEY_SAMSUNG_CAMERA_MODE);
+    char* camMode = params.get(KEY_SAMSUNG_CAMERA_MODE);
 
     bool isVideo = !strcmp(params.get(android::CameraParameters::KEY_RECORDING_HINT), "true");
 
@@ -193,7 +193,9 @@ char * camera_fixup_setparams(struct camera_device * device, const char * settin
 
 #ifdef SAMSUNG_CAMERA_MODE
     /* Samsung camcorder mode */
+    if(strcmp(camMode), "-1") {
     params.set(KEY_SAMSUNG_CAMERA_MODE, isVideo ? "1" : "0");
+    }
 #endif
 #ifdef ENABLE_ZSL
     params.set(android::CameraParameters::KEY_ZSL, isVideo ? "off" : "on");
