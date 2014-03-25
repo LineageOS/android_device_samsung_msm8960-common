@@ -120,6 +120,11 @@ static char * camera_fixup_getparams(int id, const char * settings)
     params.remove(android::CameraParameters::KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO);
 #endif
 
+#ifdef FPS_FIXUP
+    params.set(android::CameraParameters::KEY_SUPPORTED_PREVIEW_FPS_RANGE, "(7000,30000)");
+    params.set(android::CameraParameters::KEY_SUPPORTED_PREVIEW_FRAME_RATES, "7,15,20,30");
+#endif
+
 #ifdef DISABLE_FACE_DETECTION
 #ifndef DISABLE_FACE_DETECTION_BOTH_CAMERAS
     /* Disable face detection for front facing camera */
@@ -127,6 +132,8 @@ static char * camera_fixup_getparams(int id, const char * settings)
 #endif
         params.set(android::CameraParameters::KEY_MAX_NUM_DETECTED_FACES_HW, "0");
         params.set(android::CameraParameters::KEY_MAX_NUM_DETECTED_FACES_SW, "0");
+        params.set(android::CameraParameters::KEY_FACE_DETECTION, "off");
+        params.set(android::CameraParameters::KEY_SUPPORTED_FACE_DETECTION, "off");
 #ifndef DISABLE_FACE_DETECTION_BOTH_CAMERAS
     }
 #endif
@@ -172,6 +179,11 @@ char * camera_fixup_setparams(struct camera_device * device, const char * settin
     params.remove(android::CameraParameters::KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO);
 #endif
 
+#ifdef FPS_FIXUP
+    params.set(android::CameraParameters::KEY_SUPPORTED_PREVIEW_FPS_RANGE, "(7000,30000)");
+    params.set(android::CameraParameters::KEY_SUPPORTED_PREVIEW_FRAME_RATES, "7,15,20,30");
+#endif
+
 #ifdef DISABLE_FACE_DETECTION
 #ifndef DISABLE_FACE_DETECTION_BOTH_CAMERAS
     /* Disable face detection for front facing camera */
@@ -179,6 +191,8 @@ char * camera_fixup_setparams(struct camera_device * device, const char * settin
 #endif
         params.set(android::CameraParameters::KEY_MAX_NUM_DETECTED_FACES_HW, "0");
         params.set(android::CameraParameters::KEY_MAX_NUM_DETECTED_FACES_SW, "0");
+        params.set(android::CameraParameters::KEY_FACE_DETECTION, "off");
+        params.set(android::CameraParameters::KEY_SUPPORTED_FACE_DETECTION, "off");
 #ifndef DISABLE_FACE_DETECTION_BOTH_CAMERAS
     }
 #endif
