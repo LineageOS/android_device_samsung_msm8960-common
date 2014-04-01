@@ -69,6 +69,24 @@
       "revId": "678290994f58100ef822f756b3d06dd86e4e1803",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae84128_14f6168f",
+        "filename": "camera/CameraWrapper.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 5589
+      },
+      "writtenOn": "2014-04-01T07:56:41Z",
+      "side": 1,
+      "message": "Also I\u0027m using it for a null check, if binder returns null pid use the last valid value",
+      "parentUuid": "bae84128_f4fe126a",
+      "revId": "678290994f58100ef822f756b3d06dd86e4e1803",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
