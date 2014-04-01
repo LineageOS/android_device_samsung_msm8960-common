@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bae84128_74dcc212",
+        "filename": "camera/CameraWrapper.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 5503
+      },
+      "writtenOn": "2014-04-01T07:44:21Z",
+      "side": 1,
+      "message": "Why return a reference here?",
+      "revId": "678290994f58100ef822f756b3d06dd86e4e1803",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae84128_54d9be20",
+        "filename": "camera/CameraWrapper.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 5503
+      },
+      "writtenOn": "2014-04-01T07:44:21Z",
+      "side": 1,
+      "message": "Why is this static?",
+      "revId": "678290994f58100ef822f756b3d06dd86e4e1803",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
