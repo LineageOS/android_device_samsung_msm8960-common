@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bae84128_d4030e72",
+        "filename": "camera/CameraWrapper.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 5589
+      },
+      "writtenOn": "2014-04-01T07:49:40Z",
+      "side": 1,
+      "message": "Good question, someone on stackoverflow suggested it. Not sure why.",
+      "parentUuid": "bae84128_74dcc212",
+      "revId": "678290994f58100ef822f756b3d06dd86e4e1803",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bae84128_54d9be20",
         "filename": "camera/CameraWrapper.cpp",
         "patchSetId": 27
@@ -30,6 +48,24 @@
       "writtenOn": "2014-04-01T07:44:21Z",
       "side": 1,
       "message": "Why is this static?",
+      "revId": "678290994f58100ef822f756b3d06dd86e4e1803",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae84128_f4fe126a",
+        "filename": "camera/CameraWrapper.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 5589
+      },
+      "writtenOn": "2014-04-01T07:49:40Z",
+      "side": 1,
+      "message": "Because we only want to read the pid on camera open, not every time the CameraWrapper wants to set parameters (which is 3 or 4 times per open and crashes if we read it over and over)\n\nalso todo: move all the code into this function and return only a boolean 1 or 0 if we want to enable Samsung camcorder mode",
+      "parentUuid": "bae84128_54d9be20",
       "revId": "678290994f58100ef822f756b3d06dd86e4e1803",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
