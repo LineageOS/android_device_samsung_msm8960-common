@@ -87,6 +87,24 @@
       "revId": "678290994f58100ef822f756b3d06dd86e4e1803",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae84128_54f09e90",
+        "filename": "camera/CameraWrapper.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 5503
+      },
+      "writtenOn": "2014-04-01T08:02:33Z",
+      "side": 1,
+      "message": "I don\u0027t see how making processid static affects the call frequency at all.  Could you explain?\n\nAs for returning the previous value, the current whoCalledMe() is a dual get/set function which is somewhat confusing.  I think it would be cleaner to move the static outside the function and use it directly, and remove the parameter from whoCalledMe().",
+      "parentUuid": "bae84128_f4fe126a",
+      "revId": "678290994f58100ef822f756b3d06dd86e4e1803",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
