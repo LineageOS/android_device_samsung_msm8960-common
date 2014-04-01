@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "bae84128_f4357246",
+        "filename": "camera/CameraWrapper.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 5503
+      },
+      "writtenOn": "2014-04-01T08:05:39Z",
+      "side": 1,
+      "message": "Generally returning a reference from a function is dangerous.  There is no benefit in this case and it only works because the variable returned is static.  If it was not static, the code would crash or misbehave.",
+      "parentUuid": "bae84128_d4030e72",
+      "revId": "678290994f58100ef822f756b3d06dd86e4e1803",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bae84128_54d9be20",
         "filename": "camera/CameraWrapper.cpp",
         "patchSetId": 27
