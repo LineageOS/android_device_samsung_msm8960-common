@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7af24918_af5f330d",
+        "filename": "camera/CameraWrapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 5589
+      },
+      "writtenOn": "2014-04-19T16:38:30Z",
+      "side": 1,
+      "message": "Needs testing on jf, might not be a good idea to send the magic 1508 all the time if we\u0027re not enabling zsl all the time",
+      "revId": "b83be34ed18acc0fcb80710c25034903fa3cf98e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
