@@ -147,6 +147,8 @@ static char * camera_fixup_getparams(int id, const char * settings)
     return ret;
 }
 
+static bool wasVideo = false;
+
 char * camera_fixup_setparams(struct camera_device * device, const char * settings)
 {
     int id = CAMERA_ID(device);
@@ -199,7 +201,7 @@ char * camera_fixup_setparams(struct camera_device * device, const char * settin
 
 #ifdef SAMSUNG_CAMERA_MODE
     /* Samsung camcorder mode */
-    if (!(!strcmp(camMode, "1") && !isVideo)) {
+    if (!(!strcmp(camMode, "1") && !isVideo) || wasVideo) {
         if (!strcmp(params.get(android::CameraParameters::KEY_PREVIEW_FRAME_RATE), "15") && !isVideo
            && id == 1) {
             // Do nothing. Hangouts actually likes the mode to be -1.
@@ -217,6 +219,9 @@ char * camera_fixup_setparams(struct camera_device * device, const char * settin
         }
 #endif
 #endif
+
+    wasVideo = isVideo;
+
     android::String8 strParams = params.flatten();
 
     if (fixed_set_params[id])
@@ -573,6 +578,7 @@ int camera_device_open(const hw_module_t* module, const char* name,
     int cameraid;
     wrapper_camera_device_t* camera_device = NULL;
     camera_device_ops_t* camera_ops = NULL;
+    wasVideo = false;
 
     android::Mutex::Autolock lock(gCameraWrapperLock);
 
