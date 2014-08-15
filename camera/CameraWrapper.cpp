@@ -133,6 +133,12 @@ static char * camera_fixup_getparams(int id, const char * settings)
     }
 #endif
 
+    /* Set supported scene modes */
+    if (params.get(android::CameraParameters::KEY_SUPPORTED_SCENE_MODES)) {
+        params.set(android::CameraParameters::KEY_SUPPORTED_SCENE_MODES,
+                 "auto,action,portrait,landscape,night,night-portrait,theatre,beach,snow,sunset,steadyphoto,fireworks,sports,party,candlelight,flowers,AR,back-light,text,fall-color,dusk-dawn,hdr");
+    }
+
     android::String8 strParams = params.flatten();
     char *ret = strdup(strParams.string());
 
