@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a1b2928_7f4b235a",
+        "filename": "camera/CameraWrapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2014-08-15T23:25:15Z",
+      "side": 1,
+      "message": "Could append \"hdr\" to scene modes (not seeing that in this patch set though).\nhttps://github.com/CyanogenMod/android_device_sony_qcom-common/blob/cm-11.0/camera/CameraWrapper.cpp#L120",
+      "revId": "0db594437927717865b4dd3edba6edfb283f3f3c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
