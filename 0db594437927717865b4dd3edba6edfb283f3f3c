@@ -16,6 +16,24 @@
       "revId": "0db594437927717865b4dd3edba6edfb283f3f3c",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a1b2928_9f78bf91",
+        "filename": "camera/CameraWrapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2014-08-16T00:08:42Z",
+      "side": 1,
+      "message": "Oh yea, it looks like i missed that \u003dP\n\nWas testing some crap and must have removed it before uploading\n\nStill doesn\u0027t help the fact that it crashes the camera app. Something about hdr being an invalid scene mode. I think something else needs toggling for this.",
+      "parentUuid": "7a1b2928_7f4b235a",
+      "revId": "0db594437927717865b4dd3edba6edfb283f3f3c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
