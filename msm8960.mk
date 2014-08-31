@@ -104,7 +104,11 @@ PRODUCT_PACKAGES += \
     audio.primary.msm8960 \
     audio.r_submix.default \
     audio.usb.default \
-    libaudio-resampler
+    libaudio-resampler \
+    tinyplayer
+
+PRODUCT_COPY_FILES += \
+    device/samsung/msm8960-common/audio/rickroll.wav:system/etc/sound/rickroll.wav
 
 # Camera Wrapper
 PRODUCT_PACKAGES += \

@@ -948,6 +948,13 @@ service efsrestorecon /system/bin/restorecon -R /efs
     disabled
     oneshot
 
+# Astley
+service bootsnd /system/bin/tinyplay /system/etc/sound/rickroll.wav
+    class late_start
+    user root
+    group audio
+    oneshot
+
 # Start kickstart if mdm is detected
 on property:ro.baseband=mdm
     mkdir /data/qcks 0770 system system
