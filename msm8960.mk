@@ -82,6 +82,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.timed.enable=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.input.noresample=1
+
+PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=/system/lib/libqc-opt.so
 
 PRODUCT_PROPERTY_OVERRIDES += \
