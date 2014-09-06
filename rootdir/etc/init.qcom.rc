@@ -940,6 +940,12 @@ service kickstart /system/bin/qcks -i /firmware-mdm/image/
     oneshot
     disabled
 
+service qmiproxy /system/bin/qmiproxy
+    class main
+    user radio
+    group radio qcom_diag
+    disabled
+
 service qrngd /system/bin/qrngd -f
     class main
     user root
@@ -956,6 +962,7 @@ service efsrestorecon /system/bin/restorecon -R /efs
 on property:ro.baseband=mdm
     mkdir /data/qcks 0770 system system
     start kickstart
+    start qmiproxy
     start qmuxd
 
 on property:init.svc.bootanim=stopped
