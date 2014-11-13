@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a122d0e_7ff95a4d",
+        "filename": "camera/CameraWrapper.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2014-11-13T10:19:31Z",
+      "side": 0,
+      "message": "See Jurica\u0027s comments in your other patchset.",
+      "revId": "6bb611a8f7545e796b2e75bf3898cfdeff566750",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
