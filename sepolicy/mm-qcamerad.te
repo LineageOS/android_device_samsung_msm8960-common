@@ -1,0 +1,1 @@
+allow mm-qcamerad audio_device:chr_file { create ioctl open read unlink write };

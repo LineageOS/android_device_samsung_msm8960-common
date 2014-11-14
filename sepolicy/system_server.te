@@ -1,0 +1,2 @@
+allow system_server device:chr_file { ioctl open read write };
+allow system_server device:efs_file { open read };

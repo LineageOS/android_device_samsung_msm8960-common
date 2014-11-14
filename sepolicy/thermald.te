@@ -1,0 +1,17 @@
+type thermald, domain;
+type thermald_exec, exec_type, file_type;
+init_daemon_domain(thermald)
+
+allow thermald smem_log_device:chr_file { ioctl open read write };
+allow thermald socket_device:dir { add_name write };
+allow thermald socket_device:sock_file { create setattr };
+allow thermald sysfs_thermal:dir { open read search };
+allow thermald sysfs_thermal:file { getattr open read write };
+allow thermald sysfs_mpdecision:file { getattr open read write };
+allow thermald qmuxd_socket:dir { add_name write };
+allow thermald qmuxd_socket:sock_file { create setattr write };
+allow thermald qmuxd:unix_stream_socket { connectto };
+
+allow thermald self:capability { chown dac_override fsetid net_admin };
+allow thermald self:socket { ioctl create read write };
+allow thermald self:netlink_kobject_uevent_socket { bind create read setopt };
