@@ -1,0 +1,19 @@
+type sysinit, domain;
+type sysinit_exec, exec_type, file_type;
+init_daemon_domain(sysinit)
+
+type macloader, domain;
+type macloader_exec, exec_type, file_type;
+init_daemon_domain(macloader)
+
+type qrngd, domain;
+type qrngd_exec, exec_type, file_type;
+init_daemon_domain(qrngd)
+
+type efsrestorecon, domain;
+type efsrestorecon_exec, exec_type, file_type;
+init_daemon_domain(efsrestorecon)
+
+type thermald, domain;
+type thermald_exec, exec_type, file_type;
+init_daemon_domain(thermald)
