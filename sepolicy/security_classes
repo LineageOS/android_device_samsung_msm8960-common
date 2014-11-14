@@ -1,0 +1,5 @@
+class efs_file
+class kgsl-2d0_device
+class hw_random_device
+class mem_device
+class timerirq_device

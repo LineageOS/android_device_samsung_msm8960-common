@@ -1,0 +1,9 @@
+type macloader, domain;
+type macloader_exec, exec_type, file_type;
+init_daemon_domain(macloader)
+
+allow macloader efs_file:file { getattr open read };
+allow macloader system_data_file:file { open setattr write };
+allow macloader shell_exec:file { execute execute_no_trans open read };
+allow macloader system_file:file { execute_no_trans };
+allow macloader self:capability { chown fowner fsetid };
