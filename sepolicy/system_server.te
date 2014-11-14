@@ -1,0 +1,2 @@
+allow system_server device:timerirq_device { ioctl open read write };
+allow system_server device:efs_file { open read };

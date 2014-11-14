@@ -1,0 +1,1 @@
+allow bootanim device:kgsl-2d0_device { open read write };
