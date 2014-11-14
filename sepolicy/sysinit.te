@@ -1,0 +1,7 @@
+type sysinit, domain;
+type sysinit_exec, exec_type, file_type;
+init_daemon_domain(sysinit)
+
+allow sysinit shell_exec:file { read };
+allow sysinit system_file:file { execute_no_trans };
+allow sysinit devpts:chr_file { open read write };
