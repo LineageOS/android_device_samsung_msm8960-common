@@ -21,7 +21,8 @@ const char CameraParameters::KEY_SUPPORTED_FACE_DETECTION[] = "face-detection-va
 const char CameraParameters::KEY_ZSL[] = "zsl"; \
 const char CameraParameters::KEY_ISO_MODE[] = "iso"; \
 const char CameraParameters::KEY_CAMERA_MODE[] = "camera-mode"; \
-const char CameraParameters::KEY_SAMSUNG_CAMERA_MODE[] = "cam_mode";
+const char CameraParameters::KEY_SAMSUNG_CAMERA_MODE[] = "cam_mode"; \
+int CameraParameters::getInt64(const char *key) const { return -1; }
 
 #define CAMERA_PARAMETERS_EXTRA_H \
     static const char KEY_SUPPORTED_ISO_MODES[]; \
@@ -30,4 +31,5 @@ const char CameraParameters::KEY_SAMSUNG_CAMERA_MODE[] = "cam_mode";
     static const char KEY_ZSL[]; \
     static const char KEY_ISO_MODE[]; \
     static const char KEY_CAMERA_MODE[]; \
-    static const char KEY_SAMSUNG_CAMERA_MODE[];
+    static const char KEY_SAMSUNG_CAMERA_MODE[]; \
+    int getInt64(const char *key) const;
