@@ -108,12 +108,10 @@ BOARD_SEPOLICY_UNION += \
     domain.te \
     drmserver.te \
     file.te \
-    hci_init.te \
     healthd.te \
     init.te \
     init_shell.te \
     keystore.te \
-    kickstart.te \
     mediaserver.te \
     nfc.te \
     rild.te \
