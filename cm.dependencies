@@ -4,6 +4,10 @@
     "target_path": "device/samsung/qcom-common"
   },
   {
+    "repository": "android_device_samsung_qcom-sepolicy",
+    "target_path": "device/samsung/qcom-sepolicy"
+  },
+  {
     "repository": "android_kernel_samsung_d2",
     "target_path": "kernel/samsung/d2"
   }
