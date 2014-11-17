@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a122d0e_6e7c0073",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 10
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2014-11-17T16:34:28Z",
+      "side": 1,
+      "message": "appending here doesn\u0027t seem to work for me, works fine including the header in my device tree",
+      "revId": "d49eddb344810c84910eb3d44b1e2483066f7258",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
