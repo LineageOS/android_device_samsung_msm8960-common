@@ -82,7 +82,26 @@ typedef struct wrapper_camera_device {
     __wrapper_dev->vendor->ops->func(__wrapper_dev->vendor, ##__VA_ARGS__); \
 })
 
+static bool flipZsl = false;
+static bool zslState = false;
+static bool previewRunning = false;
+static bool activeFocusMove = false;
+static camera_notify_callback sNotifCb;
+
 #define CAMERA_ID(device) (((wrapper_camera_device_t *)(device))->id)
+
+static void notify_intercept(int32_t msg, int32_t b, int32_t c, void *cookie) {
+    if (msg == CAMERA_MSG_FOCUS) {
+        ALOGV("GOT FOCUS MESSAGE: %d",b);
+    } else if (msg == CAMERA_MSG_FOCUS_MOVE && b == 1) {
+        ALOGV("GOT FOCUS MOVE START");
+        activeFocusMove = true;
+    } else if (msg == CAMERA_MSG_FOCUS_MOVE && b == 0) {
+        ALOGV("GOT FOCUS MOVE STOP");
+        activeFocusMove = false;
+    }
+    sNotifCb(msg, b, c, cookie);
+}
 
 static int check_vendor_module()
 {
@@ -218,14 +237,23 @@ char * camera_fixup_setparams(struct camera_device * device, const char * settin
         params.set(android::CameraParameters::KEY_CAMERA_MODE, isVideo ? "0" : "1");
 #endif
 
+    if (!strcmp(params.get("zsl"), "on")) {
+        if (previewRunning && !zslState) { flipZsl = true; }
+        zslState = true;
+        params.set("camera-mode", "1");
+    } else {
+        if (previewRunning && zslState) { flipZsl = true; }
+        zslState = false;
+        params.set("camera-mode", "0");
+    }
+
+
+    ALOGV("%s: fixed parameters:", __func__);
+    //params.dump();
+
     android::String8 strParams = params.flatten();
+    char *ret = strdup(strParams.string());
 
-    if (fixed_set_params[id])
-        free(fixed_set_params[id]);
-    fixed_set_params[id] = strdup(strParams.string());
-    char *ret = fixed_set_params[id];
-
-    ALOGD("%s: set parameters fixed up", __FUNCTION__);
     return ret;
 }
 
@@ -257,7 +285,8 @@ void camera_set_callbacks(struct camera_device * device,
     if(!device)
         return;
 
-    VENDOR_CALL(device, set_callbacks, notify_cb, data_cb, data_cb_timestamp, get_memory, user);
+    sNotifCb = notify_cb;
+    VENDOR_CALL(device, set_callbacks, notify_intercept, data_cb, data_cb_timestamp, get_memory, user);
 }
 
 void camera_enable_msg_type(struct camera_device * device, int32_t msg_type)
@@ -295,13 +324,16 @@ int camera_msg_type_enabled(struct camera_device * device, int32_t msg_type)
 
 int camera_start_preview(struct camera_device * device)
 {
+    int rc = 0;
     ALOGV("%s", __FUNCTION__);
     ALOGV("%s->%08X->%08X", __FUNCTION__, (uintptr_t)device, (uintptr_t)(((wrapper_camera_device_t*)device)->vendor));
 
     if(!device)
         return -EINVAL;
 
-    return VENDOR_CALL(device, start_preview);
+    rc = VENDOR_CALL(device, start_preview);
+    previewRunning = (rc == android::NO_ERROR);
+    return rc;
 }
 
 void camera_stop_preview(struct camera_device * device)
@@ -312,6 +344,7 @@ void camera_stop_preview(struct camera_device * device)
     if(!device)
         return;
 
+    previewRunning = false;
     VENDOR_CALL(device, stop_preview);
 }
 
@@ -358,6 +391,10 @@ void camera_stop_recording(struct camera_device * device)
 
 
     VENDOR_CALL(device, stop_recording);
+
+    /* Restart preview after stop recording to flush buffers and not crash */
+    VENDOR_CALL(device, stop_preview);
+    VENDOR_CALL(device, start_preview);
 }
 
 int camera_recording_enabled(struct camera_device * device)
@@ -391,6 +428,12 @@ int camera_auto_focus(struct camera_device * device)
     if(!device)
         return -EINVAL;
 
+
+    if (activeFocusMove) {
+       ALOGV("FORCED FOCUS MOVE STOP");
+       VENDOR_CALL(device, cancel_auto_focus);
+       activeFocusMove = false;
+    }
 
     return VENDOR_CALL(device, auto_focus);
 }
@@ -453,7 +496,14 @@ int camera_set_parameters(struct camera_device * device, const char *params)
     __android_log_write(ANDROID_LOG_VERBOSE, LOG_TAG, tmp);
 #endif
 
+    if (flipZsl) {
+        camera_stop_preview(device);
+    }
     int ret = VENDOR_CALL(device, set_parameters, tmp);
+    if (flipZsl) {
+        camera_start_preview(device);
+        flipZsl = false;
+    }
     return ret;
 }
 
