@@ -1,0 +1,4 @@
+# FIXME allow rmt_storage kmem_device:chr_file { read write open };
+# FIXME allow rmt_storage self:capability sys_rawio;
+allow rmt_storage ssd_device:blk_file { read write open };
+

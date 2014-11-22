@@ -1,0 +1,2 @@
+allow untrusted_app kgsl-2d0_dev:chr_file { read write open };
+
