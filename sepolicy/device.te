@@ -1,0 +1,4 @@
+type kgsl-2d_dev, dev_type;
+type timerirq_dev, dev_type;
+type msm_rotator_dev, dev_type;
+type keypad_dev, dev_type;
