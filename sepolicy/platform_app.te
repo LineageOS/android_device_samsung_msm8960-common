@@ -1,0 +1,1 @@
+allow platform_app video_device:chr_file { read write open };
