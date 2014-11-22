@@ -1,0 +1,3 @@
+allow rmt_storage ssd_device:blk_file { read write open };
+# FIXME /dev/mem
+# allow rmt_storage kmem_device:chr_file { read write };

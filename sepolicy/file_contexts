@@ -2,5 +2,11 @@
 /system/bin/macloader		u:object_r:macloader_exec:s0
 /system/bin/thermald		u:object_r:thermald_exec:s0
 /system/bin/qrngd		u:object_r:qrngd_exec:s0
-# FIXME /system/bin/su			u:object_r:su_exec:s0
-# FIXME /system/bin/restorecon		u:object_r:efsrestorecon_exec:s0
+
+/dev/timerirq			u:object_r:timerirq_dev:s0
+/dev/kgsl-2d(.*)		u:object_r:kgsl-2d_dev:s0
+/dev/msm_rotator		u:object_r:msm_rotator_dev:s0
+/dev/block/mmcblk0(.*)		u:object_r:mmc_block_device:s0
+/dev/audience_a2220		u:object_r:audio_device:s0
+
+/sys/devices/virtual/sec/sec_touchkey/keypad_enable	u:object_r:keypad_dev:s0
