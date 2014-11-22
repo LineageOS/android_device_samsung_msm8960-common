@@ -1,0 +1,3 @@
+allow ueventd keypad_dev:file getattr;
+allow ueventd vfat:dir search;
+allow ueventd vfat:file r_file_perms;
