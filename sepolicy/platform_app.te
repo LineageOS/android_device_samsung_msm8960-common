@@ -1,0 +1,1 @@
+allow platform_app kgsl-2d_dev:chr_file { read write open };
