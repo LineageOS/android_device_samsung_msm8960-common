@@ -1,0 +1,2 @@
+allow platform_app device:chr_file { read write open };
+

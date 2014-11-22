@@ -107,11 +107,24 @@ TARGET_RECOVERY_FSTAB := device/samsung/msm8960-common/rootdir/etc/fstab.qcom
 BOARD_SEPOLICY_DIRS += device/samsung/msm8960-common/sepolicy
 
 BOARD_SEPOLICY_UNION += \
+    bluetooth.te \
+    bootanim.te \
     file_contexts \
     macloader.te \
+    mediaserver.te \
+    mm-qcamerad.te \
+    mpdecision.te \
+    platform_app.te \
     qrngd.te \
+    rild.te \
+    rmt_storage.te \
+    surfaceflinger.te \
     sysinit.te \
-    thermald.te
+    system_server.te \
+    thermald.te \
+    ueventd.te \
+    untrusted_app.te \
+    wpa.te
 
 # Vold
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
