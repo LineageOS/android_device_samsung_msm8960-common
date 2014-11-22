@@ -1,0 +1,19 @@
+type rmt_storage2, domain, rmt_placeholder;
+type rmt_storage2_exec, exec_type, file_type;
+init_daemon_domain(rmt_storage2);
+
+allow rmt_storage2 self:capability sys_rawio;
+
+allow rmt_storage2 ssd_device:blk_file rw_file_perms;
+allow rmt_storage2 kmem_device:chr_file rw_file_perms;
+allow rmt_storage2 modem_efs_partition_device:blk_file rw_file_perms;
+allow rmt_storage2 block_device:dir search;
+allow rmt_storage2 cgroup:dir { create add_name };
+allow rmt_storage2 smem_log_device:chr_file rw_file_perms;
+allow rmt_storage2 self:capability { setuid setgid sys_admin dac_override };
+allow rmt_storage2 self:capability2 block_suspend;
+allow rmt_storage2 self:socket create_socket_perms;
+allow rmt_storage2 sysfs_wake_lock:file w_file_perms;
+allow rmt_storage2 uio_device:chr_file rw_file_perms;
+allow rmt_storage2 mmc_block_device:blk_file r_file_perms;
+allow rmt_storage2 self:capability { net_raw setpcap };
