@@ -4,3 +4,9 @@
 /system/bin/qrngd		u:object_r:qrngd_exec:s0
 # FIXME /system/bin/su			u:object_r:su_exec:s0
 # FIXME /system/bin/restorecon		u:object_r:efsrestorecon_exec:s0
+
+/dev/timerirq			u:object_r:timerirq_dev:s0
+/dev/kgsl-2d0			u:object_r:kgsl-2d0_dev:s0
+/dev/msm_rotator		u:object_r:msm_rotator_dev:s0
+
+/proc/bluetooth/sleep/lpm	u:object_r:bluetooth_file:s0
