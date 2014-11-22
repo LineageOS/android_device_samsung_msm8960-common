@@ -1,0 +1,1 @@
+allow mediaserver camera_server:sock_file write;

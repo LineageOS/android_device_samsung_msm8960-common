@@ -564,18 +564,18 @@ on property:bluetooth.isEnabled=true
 on property:vold.decrypt=trigger_restart_framework
     start config_bluetooth
 
-service irsc_util /system/bin/logwrapper /system/bin/irsc_util "/etc/sec_config"
+service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
     user root
     oneshot
 
-service rmt_storage /system/bin/rmt_storage
+service rmt_storage2 /system/bin/rmt_storage2
     class core
     user root
     disabled
 
 on property:ro.boot.emmc=true
-    start rmt_storage
+    start rmt_storage2
 
 service bridgemgrd /system/bin/bridgemgrd
     class late_start
