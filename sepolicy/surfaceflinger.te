@@ -1,0 +1,3 @@
+allow surfaceflinger audio_device:chr_file { read write open };
+allow surfaceflinger kgsl-2d_dev:chr_file { read write ioctl open };
+allow surfaceflinger msm_rotator_dev:chr_file { read write ioctl open };
