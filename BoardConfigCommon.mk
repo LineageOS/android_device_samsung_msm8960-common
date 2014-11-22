@@ -103,6 +103,16 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_RECOVERY_SWIPE := true
 TARGET_RECOVERY_FSTAB := device/samsung/msm8960-common/rootdir/etc/fstab.qcom
 
+# SELinux
+BOARD_SEPOLICY_DIRS += device/samsung/msm8960-common/sepolicy
+
+BOARD_SEPOLICY_UNION += \
+    file_contexts \
+    macloader.te \
+    qrngd.te \
+    sysinit.te \
+    thermald.te
+
 # Vold
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_MAX_PARTITIONS := 28
