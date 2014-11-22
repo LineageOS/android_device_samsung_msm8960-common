@@ -1,0 +1,1 @@
+allow bluetooth proc_bthc:file { open search write };
