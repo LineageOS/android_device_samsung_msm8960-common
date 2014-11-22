@@ -1,0 +1,6 @@
+/system/bin/sysinit		u:object_r:sysinit_exec:s0
+/system/bin/macloader		u:object_r:macloader_exec:s0
+/system/bin/thermald		u:object_r:thermald_exec:s0
+/system/bin/qrngd		u:object_r:qrngd_exec:s0
+# FIXME /system/bin/su			u:object_r:su_exec:s0
+# FIXME /system/bin/restorecon		u:object_r:efsrestorecon_exec:s0
