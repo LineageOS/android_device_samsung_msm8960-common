@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bab6814e_aa860363",
+        "filename": "sepolicy/macloader.te",
+        "patchSetId": 14
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2014-11-25T10:17:14Z",
+      "side": 1,
+      "message": "too broad",
+      "revId": "ddd6c4d31a3a3f4f08bb5ff4e8d2b9eab584cbe9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab6814e_0a7c6f71",
+        "filename": "sepolicy/mediaserver.te",
+        "patchSetId": 14
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2014-11-25T10:17:14Z",
+      "side": 1,
+      "message": "too broad",
+      "revId": "ddd6c4d31a3a3f4f08bb5ff4e8d2b9eab584cbe9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab6814e_ea800b49",
+        "filename": "sepolicy/mm-qcamerad.te",
+        "patchSetId": 14
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2014-11-25T10:17:14Z",
+      "side": 1,
+      "message": "too broad",
+      "revId": "ddd6c4d31a3a3f4f08bb5ff4e8d2b9eab584cbe9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab6814e_2a9333a5",
+        "filename": "sepolicy/mpdecision.te",
+        "patchSetId": 14
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2014-11-25T10:17:14Z",
+      "side": 1,
+      "message": "too broad",
+      "revId": "ddd6c4d31a3a3f4f08bb5ff4e8d2b9eab584cbe9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab6814e_8a905f97",
+        "filename": "sepolicy/rmt_storage.te",
+        "patchSetId": 14
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2014-11-25T10:17:14Z",
+      "side": 1,
+      "message": "can remove now",
+      "revId": "ddd6c4d31a3a3f4f08bb5ff4e8d2b9eab584cbe9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab6814e_cae8a719",
+        "filename": "sepolicy/sysinit.te",
+        "patchSetId": 14
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2014-11-25T10:17:14Z",
+      "side": 1,
+      "message": "too broad",
+      "revId": "ddd6c4d31a3a3f4f08bb5ff4e8d2b9eab584cbe9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab6814e_aaed6327",
+        "filename": "sepolicy/thermald.te",
+        "patchSetId": 14
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2014-11-25T10:17:14Z",
+      "side": 1,
+      "message": "too broad",
+      "revId": "ddd6c4d31a3a3f4f08bb5ff4e8d2b9eab584cbe9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab6814e_0af3cf0b",
+        "filename": "sepolicy/thermald.te",
+        "patchSetId": 14
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2014-11-25T10:17:14Z",
+      "side": 1,
+      "message": "too broad",
+      "revId": "ddd6c4d31a3a3f4f08bb5ff4e8d2b9eab584cbe9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
