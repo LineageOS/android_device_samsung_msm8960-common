@@ -2,6 +2,74 @@
   "comments": [
     {
       "key": {
+        "uuid": "bab6814e_ad629aab",
+        "filename": "sepolicy/file_contexts",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 8640
+      },
+      "writtenOn": "2014-11-26T14:34:44Z",
+      "side": 1,
+      "message": "/dev/msm_rotator     u:object_r:video_device:s0\nPrevents the need to add a lot of other rules",
+      "revId": "f1c902268292c2d230776cf78c1d457c1cfd447f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab6814e_ad3bba9b",
+        "filename": "sepolicy/macloader.te",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 8640
+      },
+      "writtenOn": "2014-11-26T14:34:44Z",
+      "side": 1,
+      "message": "You should determine which file in data is being accessed and give it a proper label rather than granting macloader access to all system_data_files.",
+      "revId": "f1c902268292c2d230776cf78c1d457c1cfd447f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab6814e_0d41260c",
+        "filename": "sepolicy/mediaserver.te",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 8640
+      },
+      "writtenOn": "2014-11-26T14:34:44Z",
+      "side": 1,
+      "message": "See above comment. What file is it specifically trying to access?",
+      "revId": "f1c902268292c2d230776cf78c1d457c1cfd447f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab6814e_4d4b2e2c",
+        "filename": "sepolicy/mpdecision.te",
+        "patchSetId": 8
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 8640
+      },
+      "writtenOn": "2014-11-26T14:34:44Z",
+      "side": 1,
+      "message": "Most likely it is looking for\n/data/system/default_values u:object_r:mpctl_data_file:s0\nShould fix t his.",
+      "revId": "f1c902268292c2d230776cf78c1d457c1cfd447f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bab6814e_d7dccb1a",
         "filename": "sepolicy/sysinit.te",
         "patchSetId": 8
