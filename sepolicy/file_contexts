@@ -1,6 +1,5 @@
 /system/bin/macloader		u:object_r:macloader_exec:s0
 /system/bin/thermald		u:object_r:thermald_exec:s0
-/system/bin/qrngd		u:object_r:qrngd_exec:s0
 /system/bin/rmt_storage2	u:object_r:rmt_storage2_exec:s0
 
 /dev/timerirq			u:object_r:timerirq_dev:s0

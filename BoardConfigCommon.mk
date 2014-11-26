@@ -117,7 +117,6 @@ BOARD_SEPOLICY_UNION += \
     mm-qcamerad.te \
     mpdecision.te \
     platform_app.te \
-    qrngd.te \
     rild.te \
     rmt_storage2.te \
     surfaceflinger.te \
