@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bab6814e_bc2f66f5",
+        "filename": "rootdir/etc/fstab.qcom",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2014-11-28T14:36:16Z",
+      "side": 1,
+      "message": "should make these mnt_flags recoveryonly too",
+      "revId": "ee8d5ab925f6b0266d7d40469db7b37d86a784f3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
