@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bab6814e_ac960e92",
+        "filename": "sepolicy/macloader.te",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2014-12-02T20:46:37Z",
+      "side": 1,
+      "message": "rw_dir_perms",
+      "revId": "7d36acd95df889057ed3d9541c604c0bc0617df9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab6814e_4cf842e6",
+        "filename": "sepolicy/mpdecision.te",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2014-12-02T20:46:37Z",
+      "side": 1,
+      "message": "i dont like this, what dir is mpdecision trying to access? we should set a context for it in file_contexts (u:object_r:mpctl_data_file:s0)",
+      "revId": "7d36acd95df889057ed3d9541c604c0bc0617df9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab6814e_acdd6e72",
+        "filename": "sepolicy/mpdecision.te",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2014-12-02T20:46:37Z",
+      "side": 1,
+      "message": "same as above",
+      "revId": "7d36acd95df889057ed3d9541c604c0bc0617df9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab6814e_ece7763e",
+        "filename": "sepolicy/system_app.te",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2014-12-02T20:46:37Z",
+      "side": 1,
+      "message": "alphabetize! \u003d)",
+      "revId": "7d36acd95df889057ed3d9541c604c0bc0617df9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
