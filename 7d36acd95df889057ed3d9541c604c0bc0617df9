@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bab6814e_fff2766e",
+        "filename": "sepolicy/macloader.te",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2014-12-03T14:00:36Z",
+      "side": 1,
+      "message": "was trying to be as surgical as possible, nothing wrong with macros tho ;p",
+      "parentUuid": "bab6814e_ac960e92",
+      "revId": "7d36acd95df889057ed3d9541c604c0bc0617df9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bab6814e_4cf842e6",
         "filename": "sepolicy/mpdecision.te",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-12-02T20:46:37Z",
       "side": 1,
       "message": "i dont like this, what dir is mpdecision trying to access? we should set a context for it in file_contexts (u:object_r:mpctl_data_file:s0)",
+      "revId": "7d36acd95df889057ed3d9541c604c0bc0617df9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab6814e_5fe8e27c",
+        "filename": "sepolicy/mpdecision.te",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 401
+      },
+      "writtenOn": "2014-12-03T14:00:36Z",
+      "side": 1,
+      "message": "looks like /data/system/default_values. will push up a new set soon.",
+      "parentUuid": "bab6814e_4cf842e6",
       "revId": "7d36acd95df889057ed3d9541c604c0bc0617df9",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
