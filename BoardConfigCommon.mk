@@ -104,37 +104,6 @@ TARGET_RECOVERY_FSTAB := device/samsung/msm8960-common/rootdir/etc/fstab.qcom
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += device/samsung/msm8960-common/sepolicy
 
-BOARD_SEPOLICY_UNION += \
-    bluetooth.te \
-    bootanim.te \
-    device.te \
-    file.te \
-    file_contexts \
-    gamma_dev.te \
-    genfs_contexts \
-    init_shell.te \
-    kernel.te \
-    keypad_dev.te \
-    macloader.te \
-    mediaserver.te \
-    mm-qcamerad.te \
-    mpdecision.te \
-    netmgrd.te \
-    orientationd.te \
-    platform_app.te \
-    qmuxd.te \
-    rild.te \
-    rmt_storage.te \
-    surfaceflinger.te \
-    sysinit.te \
-    system_app.te \
-    system_server.te \
-    thermal-engine.te \
-    thermald.te \
-    ueventd.te \
-    vold.te \
-    wpa.te
-
 # Vold
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_MAX_PARTITIONS := 28
