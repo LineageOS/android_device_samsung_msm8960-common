@@ -34,6 +34,42 @@
       "revId": "6867d16bcb4666b01734ab2252af5aea9155b7ed",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aa08908_72a07791",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2014-12-23T11:26:47Z",
+      "side": 1,
+      "message": "I did update these, their location didn\u0027t change.",
+      "parentUuid": "7aa08908_9296c392",
+      "revId": "6867d16bcb4666b01734ab2252af5aea9155b7ed",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aa08908_d2adeb89",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2014-12-23T11:26:47Z",
+      "side": 1,
+      "message": "It didn\u0027t change.",
+      "parentUuid": "7aa08908_d21a0b17",
+      "revId": "6867d16bcb4666b01734ab2252af5aea9155b7ed",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
