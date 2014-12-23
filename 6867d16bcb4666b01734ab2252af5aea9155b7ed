@@ -16,6 +16,24 @@
       "revId": "6867d16bcb4666b01734ab2252af5aea9155b7ed",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aa08908_d21a0b17",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5589
+      },
+      "writtenOn": "2014-12-23T11:15:20Z",
+      "side": 1,
+      "message": "Also I note you didn\u0027t change the egl.cfg?",
+      "parentUuid": "7aa08908_9296c392",
+      "revId": "6867d16bcb4666b01734ab2252af5aea9155b7ed",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
