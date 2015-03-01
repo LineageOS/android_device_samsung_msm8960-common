@@ -125,18 +125,19 @@ static char * camera_fixup_getparams(int id, const char * settings)
     params.set(android::CameraParameters::KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO, id ? "640x480" : "800x480");
 #endif
 
-#ifndef DISABLE_FACE_DETECTION_BOTH_CAMERAS
-    /* Disable face detection for front facing camera */
-    if(id == 1) {
-#endif
-        params.set(android::CameraParameters::KEY_MAX_NUM_DETECTED_FACES_HW, "0");
-        params.set(android::CameraParameters::KEY_MAX_NUM_DETECTED_FACES_SW, "0");
-        params.set(android::CameraParameters::KEY_FACE_DETECTION, "off");
-        params.set(android::CameraParameters::KEY_SUPPORTED_FACE_DETECTION, "off");
-#ifndef DISABLE_FACE_DETECTION_BOTH_CAMERAS
-    }
-#endif
+    /* Disable face detection */
+    params.set(android::CameraParameters::KEY_MAX_NUM_DETECTED_FACES_HW, "0");
+    params.set(android::CameraParameters::KEY_MAX_NUM_DETECTED_FACES_SW, "0");
 
+    /* Remove video-size, d2 doesn't support separate video stream */
+    params.remove(android::CameraParameters::KEY_VIDEO_SIZE);
+
+    /* Remove continuous picture/video modes for now to avoid problems with TTF */
+    if (id == 0) {
+            params.set(android::CameraParameters::KEY_SUPPORTED_FOCUS_MODES, "auto,infinity,macro,fixed");
+    } else {
+            params.set(android::CameraParameters::KEY_SUPPORTED_FOCUS_MODES, "infinity");
+    }
     android::String8 strParams = params.flatten();
     char *ret = strdup(strParams.string());
 
@@ -175,21 +176,17 @@ char * camera_fixup_setparams(struct camera_device * device, const char * settin
             params.set(android::CameraParameters::KEY_ISO_MODE, "800");
         else if(strcmp(isoMode, "ISO1600") == 0)
             params.set(android::CameraParameters::KEY_ISO_MODE, "1600");
-        else if(strcmp(isoMode, "ISO50") == 0)
-            params.set(android::CameraParameters::KEY_ISO_MODE, "50");
     }
 
-#ifndef DISABLE_FACE_DETECTION_BOTH_CAMERAS
-    /* Disable face detection for front facing camera */
-    if(id == 1) {
-#endif
-        params.set(android::CameraParameters::KEY_MAX_NUM_DETECTED_FACES_HW, "0");
-        params.set(android::CameraParameters::KEY_MAX_NUM_DETECTED_FACES_SW, "0");
-        params.set(android::CameraParameters::KEY_FACE_DETECTION, "off");
-        params.set(android::CameraParameters::KEY_SUPPORTED_FACE_DETECTION, "off");
-#ifndef DISABLE_FACE_DETECTION_BOTH_CAMERAS
-    }
-#endif
+    // Don't send mangled ISO modes pref back to the camera firmware
+    params.remove(android::CameraParameters::KEY_SUPPORTED_ISO_MODES);
+
+    /* Remove video-size, d2 doesn't support separate video stream */
+    params.remove(android::CameraParameters::KEY_VIDEO_SIZE);
+
+    /* Disable face detection */
+    params.set(android::CameraParameters::KEY_MAX_NUM_DETECTED_FACES_HW, "0");
+    params.set(android::CameraParameters::KEY_MAX_NUM_DETECTED_FACES_SW, "0");
 
 #ifdef SAMSUNG_CAMERA_MODE
     /* Samsung camcorder mode */
@@ -409,8 +406,11 @@ int camera_cancel_auto_focus(struct camera_device * device)
      * Disabling it has no adverse effect. For others, only call cancel_auto_focus when the
      * preview is enabled. This is needed so some 3rd party camera apps don't lock up. */
 #ifndef DISABLE_AUTOFOCUS
-    if (camera_preview_enabled(device))
+    if (camera_preview_enabled(device)) {
         ret = VENDOR_CALL(device, cancel_auto_focus);
+        } else {
+        ALOGV("nardshu: ignoring cancel_auto_focus while preview is stopped");
+        }
 #endif
 
     return ret;
@@ -453,8 +453,13 @@ int camera_set_parameters(struct camera_device * device, const char *params)
     __android_log_write(ANDROID_LOG_VERBOSE, LOG_TAG, tmp);
 #endif
 
-    int ret = VENDOR_CALL(device, set_parameters, tmp);
-    return ret;
+   int ret = VENDOR_CALL(device, set_parameters, tmp);
+    if (ret) {
+        ALOGV("nardshu setparameters failed");
+        __android_log_write(ANDROID_LOG_VERBOSE, LOG_TAG, tmp);
+    }
+
+    return 0;
 }
 
 char* camera_get_parameters(struct camera_device * device)
@@ -499,6 +504,11 @@ int camera_send_command(struct camera_device * device,
 
     if(!device)
         return -EINVAL;
+
+    if(cmd == CAMERA_CMD_ENABLE_FOCUS_MOVE_MSG) {
+        ALOGV("nardshu: ignoring send_command CAMERA_CMD_ENABLE_FOCUS_MOVE_MSG");
+        return 0;
+    }
 
     return VENDOR_CALL(device, send_command, cmd, arg1, arg2);
 }
