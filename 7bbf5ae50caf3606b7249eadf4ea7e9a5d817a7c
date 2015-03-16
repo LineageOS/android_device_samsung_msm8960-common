@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac665da_6b909596",
+        "filename": "sepolicy/macloader.te",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2015-03-16T17:24:29Z",
+      "side": 1,
+      "message": "combine this with the line below",
+      "revId": "7bbf5ae50caf3606b7249eadf4ea7e9a5d817a7c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
