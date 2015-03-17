@@ -249,7 +249,7 @@ on post-fs-data
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
 
     # Create the directories used by the Wireless subsystem
-    mkdir /data/misc/wifi 0770 wifi wifi
+    mkdir /data/misc/wifi 0770 wifi system
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
 
     rmdir /data/misc/wifi/wpa_supplicant
@@ -262,6 +262,27 @@ on post-fs-data
 
     mkdir /data/connectivity/nsrm 0771 system system
     chown system system /data/connectivity/nsrm
+
+    # for WIFI TRP/TIS
+    write /data/.psm.info 1
+    chown system root /data/.psm.info
+    chmod 0660 /data/.psm.info
+
+    # for WIFI Version
+    write /data/.wifiver.info 0
+    chown system root /data/.wifiver.info
+    chmod 0666 /data/.wifiver.info
+
+    # for WIFI Cert
+    chmod 0664 /data/.bustxglom.info
+    chmod 0664 /data/.roamoff.info
+    chmod 0664 /data/.frameburst.info
+    chmod 0664 /data/.txbf.info
+
+    # for WIFI MAC address
+    mkdir /efs/wifi 0775 radio system
+    chown system wifi /efs/wifi/.mac.info
+    chmod 0664 /efs/wifi/.mac.info
 
     #HDCP2.X : The directory permission is temporary.
     mkdir /efs/drm 0775  system system
@@ -389,11 +410,6 @@ on post-fs-data
     # Permission for fast dormacy for RIL
     chown system radio /sys/devices/virtual/sec/bamdmux/waketime
 
-    # for TRP/TIS
-    write /data/.psm.info 1
-    chown system root /data/.psm.info
-    chmod 0660 /data/.psm.info
-
     # icd
     exec icd_check
     chown system system /dev/icd
@@ -518,6 +534,7 @@ on post-fs-data
     # volume up/down key
     chown radio system /sys/class/sec/sec_key/wakeup_keys
 
+    restorecon_recursive /data
     setprop vold.post_fs_data_done 1
 
 on property:init.svc.surfaceflinger=stopped
