@@ -237,9 +237,6 @@ char * camera_fixup_setparams(struct camera_device * device, const char * settin
     /* Are we in continuous focus mode? */
     if (strcmp(params.get(android::CameraParameters::KEY_FOCUS_MODE), "infinity") &&
        strcmp(params.get(android::CameraParameters::KEY_FOCUS_MODE), "fixed") && (id == 0)) {
-        if (strcmp(params.get(android::CameraParameters::KEY_FOCUS_MODE), "macro")) {
-            params.set(android::CameraParameters::KEY_FOCUS_MODE, "auto");
-        }
         CAF = true;
     } else {
         /* Front camera or manually set infinity mode on rear cam */
@@ -475,6 +472,8 @@ int camera_cancel_picture(struct camera_device * device)
     return VENDOR_CALL(device, cancel_picture);
 }
 
+timespec sleepValue = {0, 500};
+
 int camera_set_parameters(struct camera_device * device, const char *params)
 {
     ALOGV("%s", __FUNCTION__);
@@ -495,7 +494,7 @@ int camera_set_parameters(struct camera_device * device, const char *params)
         ALOGV("nardshu setparameters failed");
         __android_log_write(ANDROID_LOG_VERBOSE, LOG_TAG, tmp);
     }
-
+    nanosleep(&sleepValue, NULL);
     return 0;
 }
 
@@ -520,7 +519,7 @@ char* camera_get_parameters(struct camera_device * device)
 #ifdef LOG_PARAMETERS
     __android_log_write(ANDROID_LOG_VERBOSE, LOG_TAG, params);
 #endif
-
+    nanosleep(&sleepValue, NULL);
     return params;
 }
 
