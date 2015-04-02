@@ -63,12 +63,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.composition.type=dyn \
-    ro.opengles.version=131072 \
-    camera2.portability.force_api=1
+    ro.opengles.version=131072
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.media.use-awesome=true \
-    media.stagefright.use-awesome=true
+    persist.sys.media.use-awesome=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.data_netmgrd_nint=16 \
@@ -113,10 +111,6 @@ PRODUCT_PACKAGES += \
     audio.r_submix.default \
     audio.usb.default \
     libaudio-resampler
-
-# Camera Wrapper
-PRODUCT_PACKAGES += \
-    camera.msm8960
 
 # CRDA
 PRODUCT_PACKAGES += \
