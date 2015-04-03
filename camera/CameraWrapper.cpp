@@ -461,7 +461,7 @@ static char *camera_get_parameters(struct camera_device *device)
 
 #ifndef DISABLE_FACE_DETECTION_BOTH_CAMERAS
     /* Disable face detection for front facing camera */
-    if(CAMERA_ID(device) == FRONT_CAMERA_ID) {
+    if(id == FRONT_CAMERA_ID) {
 #endif
         params.set(CameraParameters::KEY_MAX_NUM_DETECTED_FACES_HW, "0");
         params.set(CameraParameters::KEY_MAX_NUM_DETECTED_FACES_SW, "0");
