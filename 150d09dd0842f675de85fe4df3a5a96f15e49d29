@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac665da_63889a23",
+        "filename": "camera/CameraWrapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2015-04-03T14:41:03Z",
+      "side": 1,
+      "message": "You could replace id with CAMERA_ID(device) here instead.\nNow int id is unused for devices without PREVIEW_SIZE_FIXUP",
+      "revId": "150d09dd0842f675de85fe4df3a5a96f15e49d29",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
