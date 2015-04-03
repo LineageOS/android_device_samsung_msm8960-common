@@ -46,9 +46,48 @@ static camera_module_t *gVendorModule = 0;
 #ifndef DISABLE_AUTOFOCUS
 static bool CAF = false;
 #endif
-#ifdef SAMSUNG_CAMERA_MODE
-static bool wasVideo = false;
-#endif
+ 
+#define IS_CTRL  (1 << 0)
+#define IS_EXT	 (1 << 1)
+#define IS_ALPHA (1 << 2)
+ 
+static bool initialized = false;
+static unsigned int char_tbl[256] = {0};
+ 
+/* could use ctypes, but then they pretty much do the same thing */
+static void init_table()
+{
+    if (!initialized) {
+        int i;
+ 
+        for (i = 0; i < 32; i++) char_tbl[i] |= IS_CTRL;
+        char_tbl[127] |= IS_CTRL;
+ 
+        for (i = 'A'; i <= 'Z'; i++) {
+            char_tbl[i] |= IS_ALPHA;
+            char_tbl[i + 0x20] |= IS_ALPHA; /* lower case */
+        }
+ 
+        for (i = 128; i < 256; i++) char_tbl[i] |= IS_EXT;
+        initialized = true;
+    }
+}
+ 
+/* depends on what "stripped" means; we do it in place.
+ * "what" is a combination of the IS_* macros, meaning strip if
+ * a char IS_ any of them
+ */
+static void strip(char * str, int what)
+{
+    unsigned char *ptr, *s = reinterpret_cast<unsigned char*>(str);
+    ptr = s;
+    while (*s != '\0') {
+        if ((char_tbl[(int)*s] & what) == 0)
+        *(ptr++) = *s;
+        s++;
+    }
+    *ptr = '\0';
+}
 
 static int camera_device_open(const hw_module_t *module, const char *name,
         hw_device_t **device);
@@ -347,6 +386,11 @@ static int camera_set_parameters(struct camera_device *device,
 
     int id = CAMERA_ID(device);
 
+#ifdef LOG_PARAMETERS
+    ALOGV("Raw set_parameters");
+    __android_log_write(ANDROID_LOG_VERBOSE, LOG_TAG, settings);
+#endif
+
     CameraParameters params;
     params.unflatten(String8(settings));
 
@@ -374,31 +418,11 @@ static int camera_set_parameters(struct camera_device *device,
             params.set(CameraParameters::KEY_ISO_MODE, "1600");
     }
 
-#ifdef SAMSUNG_CAMERA_MODE
-    /* Samsung camcorder mode */
-    if (id == FRONT_CAMERA_ID) {
-    /* Enable for front camera only */
-        if (!(!strcmp(camMode, "1") && !isVideo) || wasVideo) {
-        /* Enable only if not already set (Snapchat) but do enable if the setting is left
-        over while switching from stills to video */
-            if ((!strcmp(params.get(CameraParameters::KEY_PREVIEW_FRAME_RATE), "15") ||
-               (!strcmp(params.get(CameraParameters::KEY_PREVIEW_SIZE), "320x240") &&
-               !strcmp(params.get(CameraParameters::KEY_JPEG_QUALITY), "96"))) && !isVideo) {
-                /* Do not set for video chat in Hangouts (Frame rate 15) or Skype (Preview size 320x240
-                and jpeg quality 96 */
-            } else {
-            /* "Normal case". Required to prevent distorted video and reboots while taking snaps */
-            params.set(CameraParameters::KEY_SAMSUNG_CAMERA_MODE, isVideo ? "1" : "0");
-            }
-            wasVideo = (isVideo || wasVideo);
-        }
-    } else {
-    wasVideo = false;
-    }
-#endif
 #ifdef ENABLE_ZSL
     params.set(CameraParameters::KEY_ZSL, isVideo ? "off" : "on");
     params.set(CameraParameters::KEY_CAMERA_MODE, isVideo ? "0" : "1");
+    if (!isVideo)
+        camera_send_command(device, 1508, 0, 0);
 #endif
 
     // Don't send mangled ISO modes pref back to the camera firmware
@@ -419,6 +443,11 @@ static int camera_set_parameters(struct camera_device *device,
 #endif
 
     String8 strParams = params.flatten();
+
+#ifdef LOG_PARAMETERS
+    ALOGV("Fixed set_parameters");
+    __android_log_write(ANDROID_LOG_VERBOSE, LOG_TAG, strParams);
+#endif
 
     return VENDOR_CALL(device, set_parameters, strParams);
 }
@@ -441,13 +470,22 @@ static char *camera_get_parameters(struct camera_device *device)
     int id = CAMERA_ID(device);
 
     char *parameters = VENDOR_CALL(device, get_parameters);
+
+    init_table();
+    strip(parameters, IS_CTRL | IS_EXT);
+
+#ifdef LOG_PARAMETERS
+    ALOGV("Raw get_parameters");
+    __android_log_write(ANDROID_LOG_VERBOSE, LOG_TAG, parameters);
+#endif
+
     wrapper_camera_device_t *wrapper = (wrapper_camera_device_t *)device;
 
     CameraParameters params;
     params.unflatten(String8(parameters));
 
     // fix params here
-    params.set(CameraParameters::KEY_SUPPORTED_ISO_MODES, iso_values[CAMERA_ID(device)]);
+    params.set(CameraParameters::KEY_SUPPORTED_ISO_MODES, iso_values[id]);
 
 #ifdef EXPOSURE_HACK
     params.set(CameraParameters::KEY_EXPOSURE_COMPENSATION_STEP, "0.5");
@@ -476,6 +514,9 @@ static char *camera_get_parameters(struct camera_device *device)
 
     /* Sure, it's supported, but not here */
     params.set(CameraParameters::KEY_VIDEO_SNAPSHOT_SUPPORTED, "false");
+
+    /* Free parameters memory for camera */
+    VENDOR_CALL(device, put_parameters, parameters);
 
     return strdup(params.flatten().string());
 }
@@ -576,10 +617,6 @@ static int camera_device_open(const hw_module_t *module, const char *name,
     int cameraid;
     wrapper_camera_device_t *camera_device = NULL;
     camera_device_ops_t *camera_ops = NULL;
-
-#ifdef SAMSUNG_CAMERA_MODE
-    wasVideo = false;
-#endif
 
     Mutex::Autolock lock(gCameraWrapperLock);
 
