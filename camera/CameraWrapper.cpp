@@ -46,8 +46,47 @@ static camera_module_t *gVendorModule = 0;
 #ifndef DISABLE_AUTOFOCUS
 static bool CAF = false;
 #endif
-#ifdef SAMSUNG_CAMERA_MODE
+
+#ifdef DERP2
 static bool wasVideo = false;
+
+#define IS_CTRL  (1 << 0)
+#define IS_EXT   (1 << 1)
+#define IS_ALPHA (1 << 2)
+
+static bool initialized = false;
+static unsigned int char_tbl[256] = {0};
+ 
+/* depends on what "stripped" means; we do it in place.
+ * "what" is a combination of the IS_* macros, meaning strip if
+ * a char IS_ any of them
+ */
+static void strip(char * str, int what)
+{
+    if (!initialized) {
+        int i;
+ 
+        for (i = 0; i < 32; i++) char_tbl[i] |= IS_CTRL;
+        char_tbl[127] |= IS_CTRL;
+ 
+        for (i = 'A'; i <= 'Z'; i++) {
+            char_tbl[i] |= IS_ALPHA;
+            char_tbl[i + 0x20] |= IS_ALPHA; /* lower case */
+        }
+ 
+        for (i = 128; i < 256; i++) char_tbl[i] |= IS_EXT;
+        initialized = true;
+    }
+
+    unsigned char *ptr, *s = reinterpret_cast<unsigned char*>(str);
+    ptr = s;
+    while (*s != '\0') {
+        if ((char_tbl[(int)*s] & what) == 0)
+        *(ptr++) = *s;
+        s++;
+    }
+    *ptr = '\0';
+}
 #endif
 
 static int camera_device_open(const hw_module_t *module, const char *name,
@@ -347,6 +386,11 @@ static int camera_set_parameters(struct camera_device *device,
 
     int id = CAMERA_ID(device);
 
+#ifdef LOG_PARAMETERS
+    ALOGV("Raw set_parameters");
+    __android_log_write(ANDROID_LOG_VERBOSE, LOG_TAG, settings);
+#endif
+
     CameraParameters params;
     params.unflatten(String8(settings));
 
@@ -374,7 +418,7 @@ static int camera_set_parameters(struct camera_device *device,
             params.set(CameraParameters::KEY_ISO_MODE, "1600");
     }
 
-#ifdef SAMSUNG_CAMERA_MODE
+#ifdef DERP2
     /* Samsung camcorder mode */
     if (id == FRONT_CAMERA_ID) {
     /* Enable for front camera only */
@@ -395,8 +439,7 @@ static int camera_set_parameters(struct camera_device *device,
     } else {
     wasVideo = false;
     }
-#endif
-#ifdef ENABLE_ZSL
+
     params.set(CameraParameters::KEY_ZSL, isVideo ? "off" : "on");
     params.set(CameraParameters::KEY_CAMERA_MODE, isVideo ? "0" : "1");
 #endif
@@ -420,12 +463,17 @@ static int camera_set_parameters(struct camera_device *device,
 
     String8 strParams = params.flatten();
 
+#ifdef LOG_PARAMETERS
+    ALOGV("Fixed set_parameters");
+    __android_log_write(ANDROID_LOG_VERBOSE, LOG_TAG, strParams);
+#endif
+
     return VENDOR_CALL(device, set_parameters, strParams);
 }
 
 const static char * iso_values[] = {"auto,"
 "ISO100,ISO200,ISO400,ISO800"
-#ifdef ISO_MODE_1600
+#ifdef DERP2
 ",ISO1600"
 #endif
 ,"auto"};
@@ -441,15 +489,23 @@ static char *camera_get_parameters(struct camera_device *device)
     int id = CAMERA_ID(device);
 
     char *parameters = VENDOR_CALL(device, get_parameters);
+
+    strip(parameters, IS_CTRL | IS_EXT);
+
+#ifdef LOG_PARAMETERS
+    ALOGV("Raw get_parameters");
+    __android_log_write(ANDROID_LOG_VERBOSE, LOG_TAG, parameters);
+#endif
+
     wrapper_camera_device_t *wrapper = (wrapper_camera_device_t *)device;
 
     CameraParameters params;
     params.unflatten(String8(parameters));
 
     // fix params here
-    params.set(CameraParameters::KEY_SUPPORTED_ISO_MODES, iso_values[CAMERA_ID(device)]);
+    params.set(CameraParameters::KEY_SUPPORTED_ISO_MODES, iso_values[id]);
 
-#ifdef EXPOSURE_HACK
+#ifdef DERP2
     params.set(CameraParameters::KEY_EXPOSURE_COMPENSATION_STEP, "0.5");
     params.set(CameraParameters::KEY_MIN_EXPOSURE_COMPENSATION, "-4");
     params.set(CameraParameters::KEY_MAX_EXPOSURE_COMPENSATION, "4");
@@ -461,7 +517,7 @@ static char *camera_get_parameters(struct camera_device *device)
 
 #ifndef DISABLE_FACE_DETECTION_BOTH_CAMERAS
     /* Disable face detection for front facing camera */
-    if(CAMERA_ID(device) == FRONT_CAMERA_ID) {
+    if(id == FRONT_CAMERA_ID) {
 #endif
         params.set(CameraParameters::KEY_MAX_NUM_DETECTED_FACES_HW, "0");
         params.set(CameraParameters::KEY_MAX_NUM_DETECTED_FACES_SW, "0");
@@ -477,7 +533,10 @@ static char *camera_get_parameters(struct camera_device *device)
     /* Sure, it's supported, but not here */
     params.set(CameraParameters::KEY_VIDEO_SNAPSHOT_SUPPORTED, "false");
 
-    return strdup(params.flatten().string());
+    char *ret = strdup(params.flatten().string());
+    free(parameters);
+
+    return ret;
 }
 
 static void camera_put_parameters(struct camera_device *device, char *params)
@@ -577,7 +636,7 @@ static int camera_device_open(const hw_module_t *module, const char *name,
     wrapper_camera_device_t *camera_device = NULL;
     camera_device_ops_t *camera_ops = NULL;
 
-#ifdef SAMSUNG_CAMERA_MODE
+#ifdef DERP2
     wasVideo = false;
 #endif
 
