@@ -34,6 +34,24 @@
       "revId": "3ace6aa7511b7e8a7b51b26c1549f097f79b5975",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac665da_b23addcb",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2015-04-04T13:21:29Z",
+      "side": 1,
+      "message": "A lot of these directories/permissions are already created/set in main init.rc",
+      "parentUuid": "5ac665da_7e72f1e6",
+      "revId": "3ace6aa7511b7e8a7b51b26c1549f097f79b5975",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
