@@ -52,6 +52,24 @@
       "revId": "3ace6aa7511b7e8a7b51b26c1549f097f79b5975",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac665da_f23455df",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 7874
+      },
+      "writtenOn": "2015-04-04T13:23:15Z",
+      "side": 1,
+      "message": "oh, thanks, ill check for duplicates\n\nright now, this change accomplishes nothing. i fixed it before and thought this was how. it obviously was not.",
+      "parentUuid": "5ac665da_b23addcb",
+      "revId": "3ace6aa7511b7e8a7b51b26c1549f097f79b5975",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
