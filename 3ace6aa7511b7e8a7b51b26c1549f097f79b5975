@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac665da_5e63b51a",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 5589
+      },
+      "writtenOn": "2015-04-04T11:16:26Z",
+      "side": 1,
+      "message": "Are you sure about this one? It\u0027s presence was causing problems on upgrades from 10.2ish",
+      "revId": "3ace6aa7511b7e8a7b51b26c1549f097f79b5975",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
