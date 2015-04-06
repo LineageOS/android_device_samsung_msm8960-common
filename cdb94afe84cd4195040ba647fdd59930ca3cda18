@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ac371cc_273a54ce",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 7874
+      },
+      "writtenOn": "2015-04-06T20:03:42Z",
+      "side": 0,
+      "message": "duplicated",
+      "revId": "cdb94afe84cd4195040ba647fdd59930ca3cda18",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
