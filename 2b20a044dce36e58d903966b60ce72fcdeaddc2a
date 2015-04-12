@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ac371cc_30a0bd90",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 7874
+      },
+      "writtenOn": "2015-04-12T20:01:19Z",
+      "side": 1,
+      "message": "this matches stock. and doesnt make sense.\n\nit is now the only instance of \"firmware-mdm\"\n\nthe only thing i can guess is kickstart has builtin failback to /firmware or something\n\nradio works.",
+      "revId": "2b20a044dce36e58d903966b60ce72fcdeaddc2a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
