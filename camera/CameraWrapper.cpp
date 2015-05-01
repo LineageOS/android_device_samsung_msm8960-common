@@ -43,7 +43,7 @@ using namespace android;
 static Mutex gCameraWrapperLock;
 static camera_module_t *gVendorModule = 0;
 
-#ifndef DISABLE_AUTOFOCUS
+#ifdef DERP2
 static bool CAF = false;
 #endif
 
@@ -277,10 +277,6 @@ static int camera_auto_focus(struct camera_device *device)
 
     if (!device)
         return -EINVAL;
-#ifdef DERP2
-     if (CAF)
-         camera_send_command(device, 1552, 0, 0);
-#endif
 
     return VENDOR_CALL(device, auto_focus);
 }
