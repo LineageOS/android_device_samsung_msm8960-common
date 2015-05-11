@@ -177,6 +177,10 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.rc \
     ueventd.qcom.rc
 
+# APN hack
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/20apn:system/etc/init.d/20apn
+
 # Thermal
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermald-8960.conf:system/etc/thermald-8960.conf
