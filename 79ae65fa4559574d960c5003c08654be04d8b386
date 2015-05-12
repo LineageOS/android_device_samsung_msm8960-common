@@ -16,6 +16,24 @@
       "revId": "79ae65fa4559574d960c5003c08654be04d8b386",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a89bdaa_371443f4",
+        "filename": "sepolicy/rild.te",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 5589
+      },
+      "writtenOn": "2015-05-12T13:09:58Z",
+      "side": 1,
+      "message": "I think i need all 3, thanks for the tip",
+      "parentUuid": "9a89bdaa_b769338e",
+      "revId": "79ae65fa4559574d960c5003c08654be04d8b386",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
