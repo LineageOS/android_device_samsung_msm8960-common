@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a89bdaa_b769338e",
+        "filename": "sepolicy/rild.te",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 167
+      },
+      "writtenOn": "2015-05-12T12:59:52Z",
+      "side": 1,
+      "message": "doesnt this need to be radio_data_file:lnk_file ?",
+      "revId": "79ae65fa4559574d960c5003c08654be04d8b386",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
