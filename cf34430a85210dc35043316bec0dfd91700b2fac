@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff0f0b1f_55f7dbf6",
+        "filename": "power/power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2015-07-16T20:09:25Z",
+      "side": 1,
+      "message": "stupid stupid stupid",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 2
+      },
+      "revId": "cf34430a85210dc35043316bec0dfd91700b2fac",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
