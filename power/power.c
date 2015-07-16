@@ -105,7 +105,8 @@ static int get_scaling_governor() {
     return 0;
 }
 
-static void cm_power_set_interactive(__attribute__((unused)) struct power_module *module, int on)
+static void cm_power_set_interactive(__attribute__((unused)) struct power_module *module,
+                                     __attribute__((unused)) int on)
 {
     //sysfs_write(NOTIFY_ON_MIGRATE, on ? "1" : "0");
 }
