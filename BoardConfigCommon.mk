@@ -98,6 +98,9 @@ BOARD_RECOVERY_SWIPE := true
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += device/samsung/msm8960-common/sepolicy
 
+# Symbols
+BOARD_PROVIDES_ADDITIONAL_BIONIC_STATIC_LIBS += libc_adreno_symbols
+
 # Vold
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_MAX_PARTITIONS := 28
