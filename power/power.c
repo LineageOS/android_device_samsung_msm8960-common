@@ -211,6 +211,14 @@ static void cm_power_hint(struct power_module *module, power_hint_t hint,
     }
 }
 
+int cm_get_feature(struct power_module *module __unused, feature_t feature)
+{
+    if (feature == POWER_FEATURE_SUPPORTED_PROFILES) {
+        return 3;
+    }
+    return -1;
+}
+
 static void cm_power_init(UNUSED struct power_module *module)
 {
     get_scaling_governor();
@@ -236,6 +244,7 @@ struct cm_power_module HAL_MODULE_INFO_SYM = {
        .init = cm_power_init,
        .setInteractive = cm_power_set_interactive,
        .powerHint = cm_power_hint,
+       .getFeature = cm_get_feature,
     },
 
     .lock = PTHREAD_MUTEX_INITIALIZER,
