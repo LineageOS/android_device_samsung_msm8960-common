@@ -34,7 +34,8 @@ on early-init
     mkdir /efs 0771 system system
 
 on init
-    export LD_PRELOAD "/system/lib/libboringssl-compat.so:/system/lib/libsamsung_symbols.so"
+    export LD_PRELOAD /system/lib/libsamsung_symbols.so
+    export LD_SHIM_LIBS /system/vendor/lib/libqomx_jpegenc.so|libboringssl-compat.so
 
     # Set permissions for persist partition
     mkdir /persist 0771 system system
