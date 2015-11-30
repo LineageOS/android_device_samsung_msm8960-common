@@ -710,6 +710,14 @@ on property:ro.baseband=mdm
     start kickstart
     start qmuxd
 
+service_redefine ril-daemon /system/bin/rild
+    class late_start
+    socket rild stream 660 root radio
+    socket sap_uim_socket1 stream 660 bluetooth bluetooth
+    socket rild-debug stream 660 radio system
+    user root
+    group radio cache inet misc audio log qcom_diag
+
 # boot completed
 on property:dev.bootcomplete=1
     # disable pulsing led on boot complete
