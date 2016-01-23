@@ -165,8 +165,14 @@
 /dev/block/mmcblk0p15     0660  system      radio
 
 # sysfs properties
-/sys/devices/virtual/input/input*       poll_delay      0660    system  radio
-/sys/devices/virtual/input/input*       enable          0660    system  radio
+/sys/devices/virtual/input/input*   poll_delay  0660    system  radio
+/sys/devices/virtual/input/input*   enable      0660    system  radio
+
+# native sensors
+/sys/devices/i2c-12/12-*  pollrate_ms 0664 system system
+/sys/devices/i2c-12/12-*  enable  0664 system system
+/sys/devices/i2c-12/12-*  poll_delay 0664 system system
+
 #permissions for video
 /dev/msm_vidc_reg         0660  system       audio
 /dev/msm_vidc_dec         0660  system       audio
