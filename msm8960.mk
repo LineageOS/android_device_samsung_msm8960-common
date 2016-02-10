@@ -55,7 +55,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     qcom.hw.aac.encoder=true \
-    ro.config.vc_call_vol_steps=10
+    ro.config.media_vol_steps=10
 
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.composition.type=dyn \
