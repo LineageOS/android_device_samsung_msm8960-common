@@ -222,6 +222,7 @@ on post-fs-data
 
     mkdir /data/misc/dhcp 0775 dhcp dhcp
     chown dhcp dhcp /data/misc/dhcp
+    chown wifi root /dev/rfkill
 
     # Create the directories used by CnE subsystem
     mkdir /data/connectivity 0771 system system
