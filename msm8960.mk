@@ -104,7 +104,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.cwm.repeatable_keys=114,115
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    wifi.interface=wlan0
+    wifi.interface=wlan0 \
+    wifi.supplicant_scan_interval=30
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.enable_boot_charger_mode=1
