@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffb9cba7_f8eec1b2",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 7
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 5589
+      },
+      "writtenOn": "2016-03-07T14:00:41Z",
+      "side": 1,
+      "message": "what\u0027s this for? Also why is it backwards from all the other ones?",
+      "revId": "2273947100245c604397afaf7673e4e5378c330d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
