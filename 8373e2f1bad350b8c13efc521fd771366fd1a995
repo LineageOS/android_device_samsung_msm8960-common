@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5faad753_851dbe67",
+        "filename": "sepolicy/system_server.te",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 7874
+      },
+      "writtenOn": "2016-05-17T22:21:52Z",
+      "side": 1,
+      "message": "rw really needed?",
+      "range": {
+        "startLine": 5,
+        "startChar": 42,
+        "endLine": 5,
+        "endChar": 55
+      },
+      "revId": "8373e2f1bad350b8c13efc521fd771366fd1a995",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
