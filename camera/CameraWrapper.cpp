@@ -43,10 +43,6 @@ using namespace android;
 static Mutex gCameraWrapperLock;
 static camera_module_t *gVendorModule = 0;
 
-#ifdef DERP2
-static bool CAF = false;
-#endif
-
 static int camera_device_open(const hw_module_t *module, const char *name,
         hw_device_t **device);
 static int camera_get_number_of_cameras(void);
@@ -297,13 +293,8 @@ static int camera_cancel_auto_focus(struct camera_device *device)
      * Disabling it has no adverse effect. For others, only call cancel_auto_focus when the
      * preview is enabled. This is needed so some 3rd party camera apps don't lock up. */
 #ifdef DERP2
-    if (camera_preview_enabled(device)) {
-        if (!CAF) {
-        //ret = VENDOR_CALL(device, cancel_auto_focus);
-        } else {
-        camera_send_command(device, 1551, 0, 0);
-        }
-    }
+    if (camera_preview_enabled(device))
+        ret = VENDOR_CALL(device, cancel_auto_focus);
 #endif
 
     return ret;
@@ -388,15 +379,6 @@ static int camera_set_parameters(struct camera_device *device,
         } else {
             params.set(CameraParameters::KEY_SAMSUNG_CAMERA_MODE, isVideo ? "1" : "0");
         }
-    }
-
-    /* Are we in continuous focus mode? */
-    if (strcmp(params.get(CameraParameters::KEY_FOCUS_MODE), "infinity") &&
-       strcmp(params.get(CameraParameters::KEY_FOCUS_MODE), "fixed") && (id == BACK_CAMERA_ID)) {
-        CAF = true;
-    } else {
-        /* Front camera or manually set infinity mode on rear cam */
-        CAF = false;
     }
 #endif
 
