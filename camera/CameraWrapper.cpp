@@ -297,13 +297,8 @@ static int camera_cancel_auto_focus(struct camera_device *device)
      * Disabling it has no adverse effect. For others, only call cancel_auto_focus when the
      * preview is enabled. This is needed so some 3rd party camera apps don't lock up. */
 #ifdef DERP2
-    if (camera_preview_enabled(device)) {
-        if (!CAF) {
-        //ret = VENDOR_CALL(device, cancel_auto_focus);
-        } else {
-        camera_send_command(device, 1551, 0, 0);
-        }
-    }
+    if (camera_preview_enabled(device))
+        ret = VENDOR_CALL(device, cancel_auto_focus);
 #endif
 
     return ret;
