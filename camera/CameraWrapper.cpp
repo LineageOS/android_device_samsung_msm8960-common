@@ -368,27 +368,13 @@ static int camera_set_parameters(struct camera_device *device,
 
 #ifdef DERP2
     bool isVideo = false;
-    bool isZsl = false;
     int camMode = -1;
 
     if (params.get(CameraParameters::KEY_RECORDING_HINT))
         isVideo = !strcmp(params.get(CameraParameters::KEY_RECORDING_HINT), "true");
 
-    if (params.get(CameraParameters::KEY_ZSL))
-        isZsl = !strcmp(params.get(CameraParameters::KEY_ZSL), "on");
-
-    if (id == FRONT_CAMERA_ID || isZsl) {
-
-        if (params.get(CameraParameters::KEY_SAMSUNG_CAMERA_MODE)) {
-            camMode = params.getInt(CameraParameters::KEY_SAMSUNG_CAMERA_MODE);
-        }
-
-        if (camMode == -1) {
-            params.set(CameraParameters::KEY_SAMSUNG_CAMERA_MODE, "1");
-        } else {
-            params.set(CameraParameters::KEY_SAMSUNG_CAMERA_MODE, isVideo ? "1" : "0");
-        }
-    }
+    params.set(android::CameraParameters::KEY_ZSL, isVideo ? "off" : "on");
+    params.set(android::CameraParameters::KEY_CAMERA_MODE, isVideo ? "0" : "1");
 
     /* Are we in continuous focus mode? */
     if (strcmp(params.get(CameraParameters::KEY_FOCUS_MODE), "infinity") &&
