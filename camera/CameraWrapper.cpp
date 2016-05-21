@@ -366,6 +366,9 @@ static int camera_set_parameters(struct camera_device *device,
             params.set(CameraParameters::KEY_ISO_MODE, "1600");
     }
 
+    /* Remove HDR */
+    params.set(android::CameraParameters::KEY_SUPPORTED_SCENE_MODES, "auto,action,night,sunset,party");
+
 #ifdef DERP2
     bool isVideo = false;
     bool isZsl = false;
