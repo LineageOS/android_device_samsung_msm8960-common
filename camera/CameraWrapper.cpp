@@ -297,13 +297,8 @@ static int camera_cancel_auto_focus(struct camera_device *device)
      * Disabling it has no adverse effect. For others, only call cancel_auto_focus when the
      * preview is enabled. This is needed so some 3rd party camera apps don't lock up. */
 #ifdef DERP2
-    if (camera_preview_enabled(device)) {
-        if (!CAF) {
-        //ret = VENDOR_CALL(device, cancel_auto_focus);
-        } else {
-        camera_send_command(device, 1551, 0, 0);
-        }
-    }
+    if (camera_preview_enabled(device))
+        ret = VENDOR_CALL(device, cancel_auto_focus);
 #endif
 
     return ret;
@@ -374,20 +369,8 @@ static int camera_set_parameters(struct camera_device *device,
     if (params.get(CameraParameters::KEY_RECORDING_HINT))
         isVideo = !strcmp(params.get(CameraParameters::KEY_RECORDING_HINT), "true");
 
-    if (params.get(CameraParameters::KEY_ZSL))
-        isZsl = !strcmp(params.get(CameraParameters::KEY_ZSL), "on");
-
-    if (id == FRONT_CAMERA_ID || isZsl) {
-
-        if (params.get(CameraParameters::KEY_SAMSUNG_CAMERA_MODE)) {
-            camMode = params.getInt(CameraParameters::KEY_SAMSUNG_CAMERA_MODE);
-        }
-
-        if (camMode == -1) {
-            params.set(CameraParameters::KEY_SAMSUNG_CAMERA_MODE, "1");
-        } else {
-            params.set(CameraParameters::KEY_SAMSUNG_CAMERA_MODE, isVideo ? "1" : "0");
-        }
+    params.set(android::CameraParameters::KEY_ZSL, isVideo ? "off" : "on");
+    params.set(android::CameraParameters::KEY_CAMERA_MODE, isVideo ? "0" : "1");
     }
 
     /* Are we in continuous focus mode? */
