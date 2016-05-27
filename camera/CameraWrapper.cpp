@@ -389,7 +389,10 @@ static int camera_set_parameters(struct camera_device *device,
             params.set(CameraParameters::KEY_SAMSUNG_CAMERA_MODE, isVideo ? "1" : "0");
         }
     }
-
+    /* Fix the FFC once in for all */
+    if (id == FRONT_CAMERA_ID}{
+        KEY_SUPPORTED_PREVIEW_SIZES = "960x720";
+    }
     /* Are we in continuous focus mode? */
     if (strcmp(params.get(CameraParameters::KEY_FOCUS_MODE), "infinity") &&
        strcmp(params.get(CameraParameters::KEY_FOCUS_MODE), "fixed") && (id == BACK_CAMERA_ID)) {
