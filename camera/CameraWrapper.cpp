@@ -390,12 +390,15 @@ static int camera_set_parameters(struct camera_device *device,
         }
     }
 
-    if (id == FRONT_CAMERA_ID)
-       params.set(CameraParameters::KEY_SUPPORTED_PREVIEW_SIZES, "960x720");
+    if (id == FRONT_CAMERA_ID) {
+        params.set(CameraParameters::KEY_SUPPORTED_PREVIEW_SIZES, "960x720");
+    } else {
+        params.set(CameraParameters::KEY_SUPPORTED_PREVIEW_SIZES, "1280x720");
+    }
 
     /* Are we in continuous focus mode? */
     if (strcmp(params.get(CameraParameters::KEY_FOCUS_MODE), "infinity") &&
-       strcmp(params.get(CameraParameters::KEY_FOCUS_MODE), "fixed") && (id == BACK_CAMERA_ID)) {
+        strcmp(params.get(CameraParameters::KEY_FOCUS_MODE), "fixed") && (id == BACK_CAMERA_ID)) {
         CAF = true;
     } else {
         /* Front camera or manually set infinity mode on rear cam */
