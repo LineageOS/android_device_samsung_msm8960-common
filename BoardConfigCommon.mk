@@ -36,10 +36,12 @@ endif
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
-BOARD_USES_LEGACY_ALSA_AUDIO := true
-QCOM_ADSP_SSR_ENABLED := false
 QCOM_ANC_HEADSET_ENABLED := false
 QCOM_FLUENCE_ENABLED := false
+ifeq ($(filter d2att d2spr d2tmo d2vzw,$(TARGET_DEVICE)),)
+BOARD_USES_LEGACY_ALSA_AUDIO := true
+QCOM_ADSP_SSR_ENABLED := false
+endif
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
