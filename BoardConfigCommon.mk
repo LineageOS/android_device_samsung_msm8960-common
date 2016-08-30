@@ -24,6 +24,7 @@ TARGET_CPU_VARIANT := krait
 
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 zcache
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x80200000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01500000
 BOARD_KERNEL_PAGESIZE := 2048
@@ -63,7 +64,7 @@ TARGET_NO_ADAPTIVE_PLAYBACK := true
 TARGET_NO_INITLOGO := true
 
 # Use dlmalloc instead of jemalloc for mallocs
-MALLOC_IMPL := dlmalloc
+#MALLOC_IMPL := dlmalloc
 
 # Fonts
 EXTENDED_FONT_FOOTPRINT := true
