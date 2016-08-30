@@ -117,8 +117,8 @@ PRODUCT_PACKAGES += \
     libaudio-resampler
 
 # Camera Wrapper
-PRODUCT_PACKAGES += \
-    camera.msm8960
+#PRODUCT_PACKAGES += \
+#    camera.msm8960
 
 # Display
 PRODUCT_PACKAGES += \
