@@ -606,7 +606,7 @@ on property:persist.data.ds_fmc_app.mode=1
     start ds_fmc_appd
 
 service macloader /system/bin/macloader
-    class main
+    class late_start
     oneshot
     seclabel u:r:macloader:s0
 
@@ -626,6 +626,13 @@ on property:service.bootanim.exit=1
     write /proc/sys/net/ipv6/conf/rmnet_usb1/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet_usb2/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet_usb3/accept_ra 2
+
+on property:wlan.driver.status=ok
+    start macloader
+
+on property:init.svc.macloader=stopped
+    chown system root /data/.rev
+    chmod 0664 /data/.rev
 
 service charger /charger
     class charger
