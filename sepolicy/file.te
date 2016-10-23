@@ -1,4 +1,5 @@
 type bluetooth_persist_file, file_type;
 type proc_bthc, fs_type, sysfs_type;
 type sensors_efs_file, file_type;
+type sysfs_wifi_nv_path, fs_type, sysfs_type;
 type wifi_efs_file, file_type;

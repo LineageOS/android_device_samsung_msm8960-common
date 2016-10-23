@@ -6,6 +6,7 @@ allow macloader self:capability { chown dac_override fowner fsetid };
 allow macloader self:process execmem;
 allow macloader efs_file:dir search;
 allow macloader wifi_efs_file:file r_file_perms;
+allow macloader sysfs_wifi_nv_path:file { open write };
 allow macloader system_file:file execute_no_trans;
 
 type_transition macloader system_data_file:file wifi_data_file;
