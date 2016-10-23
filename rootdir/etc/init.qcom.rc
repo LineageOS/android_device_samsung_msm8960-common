@@ -608,6 +608,7 @@ on property:persist.data.ds_fmc_app.mode=1
 service macloader /system/bin/macloader
     class main
     oneshot
+    seclabel u:r:macloader:s0
 
 # Disable boot timeout for external modems.
 on property:persist.sys.mdm.timeout_disable=1
