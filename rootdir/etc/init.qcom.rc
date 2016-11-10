@@ -36,6 +36,7 @@ on early-init
     mkdir /efs 0771 system system
 
 on init
+    export LD_PRELOAD /system/vendor/lib/libqmi_client_qmux.so
     export LD_SHIM_LIBS /system/lib/libril.so|libsamsung_symbols.so
 
     # Set permissions for persist partition
