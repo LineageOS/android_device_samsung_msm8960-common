@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff2e2bb8_2c04f87a",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2016-11-10T15:46:13Z",
+      "side": 1,
+      "message": "/data isn\u0027t even mounted until on fs",
+      "revId": "a7071b57d6b7485aaf2f6d52a8be8ccb8a01c893",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff2e2bb8_8cfa6472",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2016-11-10T15:46:13Z",
+      "side": 1,
+      "message": "/data isn\u0027t even mounted until on fs",
+      "revId": "a7071b57d6b7485aaf2f6d52a8be8ccb8a01c893",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
