@@ -657,4 +657,5 @@ on property:ro.baseband=mdm
 on property:dev.bootcomplete=1
     # disable pulsing led on boot complete
     exec /system/bin/sh /system/etc/init.led.sh
-
+    stop rild
+    start rild
