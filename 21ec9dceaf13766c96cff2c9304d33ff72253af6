@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff2e2bb8_1c394af1",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 7880
+      },
+      "writtenOn": "2016-11-18T13:31:08Z",
+      "side": 0,
+      "message": "You could discard lines 33-34 and just have line 35",
+      "revId": "21ec9dceaf13766c96cff2c9304d33ff72253af6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
