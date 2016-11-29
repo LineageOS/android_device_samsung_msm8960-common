@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f681702_17a8861d",
+        "filename": "sepolicy/system_app.te",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2016-11-29T12:09:26Z",
+      "side": 1,
+      "message": "bleh...this hits a neverallow",
+      "revId": "f6222906f9df2506fa44326fecf623d97dcbf219",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
