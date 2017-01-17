@@ -83,11 +83,6 @@ on early-boot
     chmod 0660 /dev/ttyHS2
     chown bluetooth bluetooth /dev/ttyHS2
 
-    # Remove symlinks to avoid issues with migrate after nandroid restores
-    # Will be recreated at end of boot
-    rm /data/data/com.android.providers.telephony/databases/telephony.db
-    rm /data/data/com.android.providers.telephony/shared_prefs/preferred-apn.xml
-
 on boot
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
@@ -501,6 +496,20 @@ on post-fs-data
     # volume up/down key
     chown radio system /sys/class/sec/sec_key/wakeup_keys
 
+    # Remove symlinks to avoid issues with migrate after nandroid restores
+    # Will be recreated at end of boot
+    # Normal path
+    rm /data/data/com.android.providers.telephony/databases
+    rm /data/data/com.android.providers.telephony/shared_prefs
+
+    # COMPAT: Handle upgrade from previous implementation of this idea. If the
+    # above could not be unlinked then we have the old symlinked files
+    # scenario. Clean that up.
+    rm /data/data/com.android.providers.telephony/databases/telephony.db
+    rm /data/data/com.android.providers.telephony/shared_prefs/preferred-apn.xml
+    rmdir /data/data/com.android.providers.telephony/databases
+    rmdir /data/data/com.android.providers.telephony/shared_prefs
+
     setprop vold.post_fs_data_done 1
 
 on property:init.svc.surfaceflinger=stopped
@@ -651,8 +660,6 @@ on property:dev.bootcomplete=1
     # disable pulsing led on boot complete
     exec /system/bin/sh /system/etc/init.led.sh
 
-    # Symlink telephony.db and preferred-apn.xml
-    mkdir /data/data/com.android.providers.telephony/databases 0700 radio radio
-    mkdir /data/data/com.android.providers.telephony/shared_prefs 0700 radio radio
-    symlink /data/user_de/0/com.android.providers.telephony/databases/telephony.db /data/data/com.android.providers.telephony/databases/telephony.db
-    symlink /data/user_de/0/com.android.providers.telephony/shared_prefs/preferred-apn.xml /data/data/com.android.providers.telephony/shared_prefs/preferred-apn.xml
+    # Symlink directories to access telephony.db and preferred-apn.xml required by libsec-ril.so
+    symlink /data/user_de/0/com.android.providers.telephony/databases /data/data/com.android.providers.telephony/databases
+    symlink /data/user_de/0/com.android.providers.telephony/shared_prefs /data/data/com.android.providers.telephony/shared_prefs
