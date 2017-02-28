@@ -168,7 +168,7 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    power.msm8960
+    power.MSM8960
 
 # Ramdisk
 PRODUCT_PACKAGES += \
