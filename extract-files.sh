@@ -1,44 +1,78 @@
 #!/bin/bash
 
+#
+# Copyright (C) 2016 The CyanogenMod Project
+# Copyright (C) 2017 The LineageOS Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
 set -e
 
-function extract() {
-    for FILE in `egrep -v '(^#|^$)' $1`; do
-        OLDIFS=$IFS IFS=":" PARSING_ARRAY=($FILE) IFS=$OLDIFS
-        FILE=`echo ${PARSING_ARRAY[0]} | sed -e "s/^-//g"`
-        DEST=${PARSING_ARRAY[1]}
-        if [ -z $DEST ]; then
-            DEST=$FILE
-        fi
-        DIR=`dirname $FILE`
-        if [ ! -d $2/$DIR ]; then
-            mkdir -p $2/$DIR
-        fi
-        # Try CM target first
-        if [ "$SOURCEDIR" != "" ]; then
-            cp /$SOURCEDIR/$DEST $2/$DEST
-        else
-            adb pull /system/$DEST $2/$DEST
-        fi
-        # if file does not exist try OEM target
-        if [ "$?" != "0" ]; then
-            if [ "$SOURCEDIR" != "" ]; then
-                cp /$SOURCEDIR/$FILE $2/$DEST
-            else
-                adb pull /system/$FILE $2/$DEST
-            fi
-        fi
-    done
-}
+# Load extract_utils and do some sanity checks
+MY_DIR="${BASH_SOURCE%/*}"
+if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
+CM_ROOT="$MY_DIR"/../../..
 
-BASE=../../../vendor/$VENDOR/msm8960-common/proprietary
-rm -rf $BASE/*
+HELPER="$CM_ROOT"/vendor/cm/build/tools/extract_utils.sh
+if [ ! -f "$HELPER" ]; then
+    echo "Unable to find helper script at $HELPER"
+    exit 1
+fi
+. "$HELPER"
 
-DEVBASE=../../../vendor/$VENDOR/$DEVICE/proprietary
-rm -rf $DEVBASE/*
+if [ $# -eq 0 ]; then
+    SRC=adb
+else
+    if [ $# -eq 1 ]; then
+        SRC=$1
+    else
+        echo "$0: bad number of arguments"
+        echo ""
+        echo "usage: $0 [PATH_TO_EXPANDED_ROM]"
+        echo ""
+        echo "If PATH_TO_EXPANDED_ROM is not specified, blobs will be extracted from"
+        echo "the device using adb pull."
+        exit 1
+    fi
+fi
 
-extract ../msm8960-common/proprietary-files.txt $BASE
-extract ../$DEVICE/proprietary-files.txt $DEVBASE
+# Initialize the helper for common device
+setup_vendor "$PLATFORM_COMMON" "$VENDOR" "$CM_ROOT" true
 
-./../msm8960-common/setup-makefiles.sh
+extract "$MY_DIR"/proprietary-files.txt "$SRC"
+
+if [ "$DEVICE" == "d2att" ] ||
+		[ "$DEVICE" == "d2tmo" ]; then
+    export BLOB_LOC=d2gsm
+elif [ "$DEVICE" == "d2cri" ] ||
+		[ "$DEVICE" == "d2scp" ] ||
+		[ "$DEVICE" == "d2usc" ]; then
+    export BLOB_LOC=d2r530
+else
+    export BLOB_LOC=$DEVICE
+fi
+
+if [ "$DEVICE_COMMON" == "d2-common"]; then
+setup_vendor "$DEVICE_COMMON" "$VENDOR" "$CM_ROOT" true
+
+extract "$MY_DIR"/../$DEVICE_COMMMON/proprietary-files.txt "$SRC"
+fi
+
+# Re-initialize the helper for device
+setup_vendor "$BLOB_LOC" "$VENDOR" "$CM_ROOT"
+
+extract "$MY_DIR"/../$DEVICE/proprietary-files.txt "$SRC"
+
+"$MY_DIR"/setup-makefiles.sh
