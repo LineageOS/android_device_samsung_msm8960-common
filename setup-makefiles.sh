@@ -74,13 +74,18 @@ else
     export BLOB_LOC=$DEVICE
 fi
 
-# Reinitialize the helper for device
+if [ "$BLOB_LOC" != "$DEVICE" ]; then
+# Reinitialize the helper for device with commonized ril
+setup_vendor "$BLOB_LOC" "$VENDOR" "$CM_ROOT" true
+else
+# Reinitialize the helper for device without commonized ril
 setup_vendor "$BLOB_LOC" "$VENDOR" "$CM_ROOT"
+fi
 
 # Copyright headers and guards
 if [ "$BLOB_LOC" == "d2gsm" ]; then
 write_headers "$D2_GSM_LIST"
-elif [ "$BLOG_LOC" == "d2r530" ]; then
+elif [ "$BLOB_LOC" == "d2r530" ]; then
 write_headers "$D2_R530_LIST"
 else
 write_headers "$DEVICE"
