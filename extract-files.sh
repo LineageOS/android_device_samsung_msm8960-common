@@ -64,10 +64,10 @@ else
     export BLOB_LOC=$DEVICE
 fi
 
-if [ "$DEVICE_COMMON" == "d2-common"]; then
+if [ "$DEVICE_COMMON" == "d2-common" ]; then
 setup_vendor "$DEVICE_COMMON" "$VENDOR" "$CM_ROOT" true
 
-extract "$MY_DIR"/../$DEVICE_COMMMON/proprietary-files.txt "$SRC"
+extract "$MY_DIR"/../$DEVICE_COMMON/proprietary-files.txt "$SRC"
 fi
 
 # Re-initialize the helper for device
