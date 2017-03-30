@@ -20,3 +20,9 @@ etc/firmware/a225p5_pm4.fw
 etc/firmware/a225_pfp.fw
 etc/firmware/a225_pm4.fw
 etc/firmware/vidc_1080p.fw
+
+# Time
+-app/TimeService/TimeService.apk|b6bb0c2b3b0b18d497932e895062c9e0176f675a
+bin/time_daemon|63b757ebfebeaea0351df5cf0e87c25f05c7502d
+vendor/lib/libTimeService.so|7f878dcb8190c71c79bd7d2a4d3579f82023d0ca
+-vendor/lib/libtime_genoff.so|56de0a281018deb7f6489df13a4fd8baafd5f346
