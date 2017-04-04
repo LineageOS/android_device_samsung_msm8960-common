@@ -57,7 +57,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.vc_call_vol_steps=10
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    debug.composition.type=dyn \
+    debug.composition.type=c2d \
     ro.opengles.version=131072 \
     camera2.portability.force_api=1 \
     media.stagefright.legacyencoder=true \
