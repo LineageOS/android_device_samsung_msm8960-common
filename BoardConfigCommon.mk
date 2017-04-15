@@ -57,8 +57,11 @@ TARGET_DISPLAY_INSECURE_MM_HEAP := true
 TARGET_DISPLAY_USE_RETIRE_FENCE := true
 TARGET_NO_ADAPTIVE_PLAYBACK := true
 
-# Use dlmalloc instead of jemalloc for mallocs
+# Use an optimized jemalloc configuration
+# meant for low-ram devices since it allows
+# out camera hal to work properly
 MALLOC_SVELTE := true
+BOARD_GLOBAL_CFLAGS += -DDECAY_TIME_DEFAULT=0
 
 # Fonts
 EXTENDED_FONT_FOOTPRINT := true
