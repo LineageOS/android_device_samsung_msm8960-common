@@ -57,9 +57,6 @@ TARGET_DISPLAY_INSECURE_MM_HEAP := true
 TARGET_DISPLAY_USE_RETIRE_FENCE := true
 TARGET_NO_ADAPTIVE_PLAYBACK := true
 
-# Use dlmalloc instead of jemalloc for mallocs
-MALLOC_SVELTE := true
-
 # Fonts
 EXTENDED_FONT_FOOTPRINT := true
 
