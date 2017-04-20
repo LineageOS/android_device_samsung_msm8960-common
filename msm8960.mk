@@ -72,9 +72,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.timed.enable=true
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.extension_library=/system/lib/libqc-opt.so
-
 # Configure libhwui
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.texture_cache_size=48 \
