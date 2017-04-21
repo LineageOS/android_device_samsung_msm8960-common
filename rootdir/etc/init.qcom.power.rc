@@ -14,6 +14,9 @@ on enable-low-power
     write /sys/module/pm_8x60/modes/cpu0/power_collapse/idle_enabled 1
     write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor ondemand
 
+    # Permissions for power hal
+    chown system system /sys/devices/system/cpu/cpu1/online
+    chmod 0664 /sys/devices/system/cpu/cpu1/online
     chown system system /sys/kernel/cpufreq_limit/cpufreq/scaling_max_freq
     chmod 0664 /sys/kernel/cpufreq_limit/cpufreq/scaling_max_freq
     chown system system /sys/kernel/cpufreq_limit/cpufreq/scaling_min_freq
@@ -56,8 +59,6 @@ on property:sys.boot_completed=1
     write /sys/kernel/mm/ksm/pages_to_scan 100
     write /sys/kernel/mm/ksm/sleep_millisecs 2000
     write /sys/kernel/mm/ksm/run 1
-
-    start mpdecision
 
 on charger
     mount_all fstab.qcom
