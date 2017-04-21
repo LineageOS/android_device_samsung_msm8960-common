@@ -383,7 +383,8 @@ static int camera_set_parameters(struct camera_device *device,
     CAF = false;
 
     if (id == FRONT_CAMERA_ID) {
-        params.set(CameraParameters::KEY_SAMSUNG_CAMERA_MODE, isVideo ? "1" : "0");
+        if (!izZsl)
+            params.set(CameraParameters::KEY_SAMSUNG_CAMERA_MODE, isVideo ? "1" : "0");
         params.set(CameraParameters::KEY_SUPPORTED_PREVIEW_SIZES, "960x720");
     } else {
         /* Are we in continuous focus mode? */
