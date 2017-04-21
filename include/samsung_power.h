@@ -30,4 +30,12 @@
 #define CPU4_SYSFS_PATH ""
 #define CPU4_INTERACTIVE_PATH ""
 
+extern int sysfs_read(char *path, char *s, int num_bytes);
+extern void sysfs_write(const char *path, char *s);
+
+void samsung_power_set_interactive_ext(int on) {
+    ALOGD("%s: %s cpu1", __func__, on ? "enabling" : "disabling");
+    sysfs_write(CPU1_ONLINE, on ? "1" : "0");
+}
+
 #endif // SAMSUNG_POWER_H
