@@ -44,7 +44,7 @@ static camera_module_t *gVendorModule = 0;
 
 #ifdef DERP2
 static bool CAF = false;
-const static char *iso_values[] = {"auto,ISO100,ISO200,ISO400,ISO800,ISO1600","auto"};
+const static char *iso_values[] = {"auto,ISO_HJR,ISO100,ISO200,ISO400,ISO800,ISO1600","auto"};
 #else
 const static char *iso_values[] = {"auto,ISO100,ISO200,ISO400,ISO800","auto"};
 #endif
