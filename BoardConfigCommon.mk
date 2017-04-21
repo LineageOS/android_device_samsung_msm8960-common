@@ -65,6 +65,7 @@ TARGET_SPECIFIC_HEADER_PATH += device/samsung/msm8960-common/include
 
 # Build samsung PowerHAL
 TARGET_POWERHAL_VARIANT := samsung
+TARGET_POWERHAL_SET_INTERACTIVE_EXT := device/samsung/msm8960-common/power/power_ext.c
 
 # Partitions
 TARGET_USERIMAGES_USE_EXT4 := true
