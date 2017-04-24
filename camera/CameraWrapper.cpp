@@ -150,26 +150,24 @@ static char *camera_fixup_getparams(int id, const char *settings)
     /* Disable face detection for front facing camera */
     if (id == 1) {
 #endif
-        params.remove(android::CameraParameters::KEY_QC_FACE_RECOGNITION);
-        params.remove(android::CameraParameters::KEY_QC_SUPPORTED_FACE_RECOGNITION);
-        params.remove(android::CameraParameters::KEY_QC_SUPPORTED_FACE_RECOGNITION_MODES);
-        params.remove(android::CameraParameters::KEY_QC_FACE_DETECTION);
-        params.remove(android::CameraParameters::KEY_QC_SUPPORTED_FACE_DETECTION);
-        params.remove(android::CameraParameters::KEY_FACE_DETECTION);
-        params.remove(android::CameraParameters::KEY_SUPPORTED_FACE_DETECTION);
+        /* Disable all forms of face detection */
+        params.set(android::CameraParameters::KEY_MAX_NUM_DETECTED_FACES_HW, "0");
+        params.set(android::CameraParameters::KEY_MAX_NUM_DETECTED_FACES_SW, "0");
+        params.set(android::CameraParameters::KEY_FACE_DETECTION, "off");
+        params.set(android::CameraParameters::KEY_SUPPORTED_FACE_DETECTION, "off");
 #ifndef DISABLE_FACE_DETECTION_BOTH_CAMERAS
     }
 #endif
 #endif
 
 #ifdef EXPOSURE_HACK
-    params.set(CameraParameters::KEY_EXPOSURE_COMPENSATION_STEP, "0.5");
-    params.set(CameraParameters::KEY_MIN_EXPOSURE_COMPENSATION, "-4");
-    params.set(CameraParameters::KEY_MAX_EXPOSURE_COMPENSATION, "4");
+    params.set(android::CameraParameters::KEY_EXPOSURE_COMPENSATION_STEP, "0.5");
+    params.set(android::CameraParameters::KEY_MIN_EXPOSURE_COMPENSATION, "-4");
+    params.set(android::CameraParameters::KEY_MAX_EXPOSURE_COMPENSATION, "4");
 #endif
 
 #ifdef DISABLE_VIDEO_SNAPSHOT
-    params.set(CameraParameters::KEY_VIDEO_SNAPSHOT_SUPPORTED, "false");
+    params.set(android::CameraParameters::KEY_VIDEO_SNAPSHOT_SUPPORTED, "false");
 #endif
 
 #if !LOG_NDEBUG
@@ -242,16 +240,14 @@ static char *camera_fixup_setparams(struct camera_device *device,
     }
 #endif
 #ifdef ENABLE_ZSL
-    if (id != 1) {
-        params.set(android::CameraParameters::KEY_ZSL, isVideo ? "off" : "on");
-        params.set(android::CameraParameters::KEY_CAMERA_MODE, isVideo ? "0" :"1");
-    }
+    params.set(android::CameraParameters::KEY_ZSL, isVideo ? "off" : "on");
+    params.set(android::CameraParameters::KEY_CAMERA_MODE, isVideo ? "0" :"1");
 #endif
 
 #ifdef CAF_HACK
     if (id == 0) {
-        if (strcmp(params.get(CameraParameters::KEY_FOCUS_MODE), "infinity") &&
-                strcmp(params.get(CameraParameters::KEY_FOCUS_MODE), "fixed"))
+        if (strcmp(params.get(android::CameraParameters::KEY_FOCUS_MODE), "infinity") &&
+                strcmp(params.get(android::CameraParameters::KEY_FOCUS_MODE), "fixed"))
             CAF = true;
         else
             CAF = false;
