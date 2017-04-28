@@ -66,8 +66,8 @@ EXTENDED_FONT_FOOTPRINT := true
 # Includes
 TARGET_SPECIFIC_HEADER_PATH += device/samsung/msm8960-common/include
 
-# Build samsung PowerHAL
-TARGET_POWERHAL_VARIANT := samsung
+# Build our own PowerHAL
+TARGET_POWERHAL_VARIANT :=
 
 # Partitions
 TARGET_USERIMAGES_USE_EXT4 := true
